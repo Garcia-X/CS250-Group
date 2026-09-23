@@ -2,6 +2,7 @@ name: Test Household Creation Endpoint
 
 on:
   pull_request:
+  workflow_dispatch:
 
 jobs:
   test:
