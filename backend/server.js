@@ -14,7 +14,7 @@ const supabase = createClient(
 const PORT = 3000;
 
 app.post("/api/household", async (req, res) => {
-    const { name } = req.body; || {};
+    const { name } = req.body || {};
 
     if (typeof name !== "string" || name.trim().length ===0) {
         return res.status(400).json({
