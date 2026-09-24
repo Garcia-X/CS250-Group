@@ -37,7 +37,23 @@ app.post("/api/household", async (req, res) => {
 
     res.status(201).json(data[0]);
 });
+app.post("/api/join-household", async (req, res) => {
+    const { uniqueId } = req.body;
 
+    const { data, error } = await supabase
+        .from("Household")
+        .select("*")
+        .eq("unique_id", uniqueId)
+        .single();
+
+    if (error || !data) {
+        return res.status(404).json({
+            error: "Household not found"
+        });
+    }
+
+    res.status(200).json(data);
+});
 if (require.main === module) {
     app.listen(PORT, () => {
         console.log(`Server running on http://localhost:${PORT}`);
