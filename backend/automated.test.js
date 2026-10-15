@@ -4,10 +4,28 @@ const app = require("./server");
 test("Testing the API endpoints and the HTTP", async () => {
     const response = await request(app)
         .post("/api/household")
-        .send({ name: "Automated Test For Household" });
-
+        
+        .send({ householdName: "Test Household", username: "Test" });
+    
     expect(response.statusCode).toBe(201);
-    expect(response.body.name).toBe("Automated Test For Household");
-    expect(response.body.unique_id).toBeDefined();
-    expect(response.body.household_id).toBeDefined();
+    expect(response.body).toEqual({
+      Household:  {
+         householdCode: expect.any(String),
+         householdID: expect.any(String),
+         name: "Test Household",
+       },
+       User:  {
+         name: "Test",
+         user_id: expect.any(String)
+       }, 
+       members:  {
+        user_id: expect.any(String),
+        householdID: expect.any(String)
+      }
+
+
+    });
+
+
+
 });
