@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Household</title>
+</head>
+<body>
+
+    <h1>Create Household</h1>
+
+    <form id="householdForm">
+        <label for="householdName">Household Name:</label>
+        <input type="text" id="householdName" name="householdName" required>
+
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="successMessage"></div>
+
+    <script>
+        const form = document.getElementById("householdForm");
+        const successMessage = document.getElementById("successMessage");
+
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const householdName = document.getElementById("householdName").value;
+
+            const response = await fetch("/api/household", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: householdName
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                successMessage.innerHTML = `
+                    <h2>Household Created Successfully</h2>
+                    <p>Name: ${data.name}</p>
+                    <p>Household ID: ${data.household_id}</p>
+                    <p>Unique ID: ${data.unique_id}</p>
+                `;
+            } else {
+                successMessage.innerHTML = `
+                    <p>Failed to create household.</p>
+                `;
+            }
+        });
+    </script>
+
+</body>
+</html>
