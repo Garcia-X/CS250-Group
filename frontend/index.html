@@ -2,58 +2,224 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Household</title>
+    <title>Roommate Chore Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        h1 { text-align: center; }
+
+        .footer {
+            margin-top: 30px;
+            padding-top: 10px;
+            border-top: 1px solid #999;
+            text-align: center;
+        }
+
+        .tab-button {
+            padding: 8px;
+            margin: 2px;
+            cursor: pointer;
+        }
+
+        .tab-button.active {
+            font-weight: bold;
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        button[type="submit"] {
+            margin-top: 15px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        .dashboard-link {
+            display: none;
+            margin-top: 15px;
+            padding: 10px;
+            border: 2px outset #999;
+            background-color: #efefef;
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .success { background-color: #d9f2d9; }
+        .error { background-color: #f2d9d9; }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Roommate Chore Manager</h1>
 
-    <h1>Create Household</h1>
+        <div id="createTab" class="tab-content active">
+            <h2>Create a Household</h2>
+            <form id="createForm">
+                <label for="createHouseholdName">Household name:</label>
+                <input type="text" id="createHouseholdName" required>
 
-    <form id="householdForm">
-        <label for="householdName">Household Name:</label>
-        <input type="text" id="householdName" name="householdName" required>
+                <label for="createUsername">Your username:</label>
+                <input type="text" id="createUsername" required>
 
-        <br><br>
+                <button type="submit">Create Household</button>
+            </form>
+        </div>
 
-        <button type="submit">Submit</button>
-    </form>
+        <div id="joinTab" class="tab-content">
+            <h2>Join a Household</h2>
+            <form id="joinForm">
+                <label for="joinHouseholdCode">Household code:</label>
+                <input type="text" id="joinHouseholdCode" required>
 
-    <div id="successMessage"></div>
+                <label for="joinUsername">Your username:</label>
+                <input type="text" id="joinUsername" required>
+
+                <button type="submit">Join Household</button>
+            </form>
+        </div>
+
+        <div id="message" class="message"></div>
+        <a id="dashboardLink" class="dashboard-link" href="dashboard.html">Go to Household Dashboard</a>
+
+        <footer class="footer">
+            <button class="tab-button active" data-tab="createTab">Create Household</button>
+            <button class="tab-button" data-tab="joinTab">Join Household</button>
+        </footer>
+    </div>
 
     <script>
-        const form = document.getElementById("householdForm");
-        const successMessage = document.getElementById("successMessage");
+        const tabButtons = document.querySelectorAll(".tab-button");
+        const tabContents = document.querySelectorAll(".tab-content");
+        const message = document.getElementById("message");
+        const dashboardLink = document.getElementById("dashboardLink");
 
-        form.addEventListener("submit", async function(event) {
+        tabButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                tabButtons.forEach(function(tabButton) {
+                    tabButton.classList.remove("active");
+                });
+
+                tabContents.forEach(function(tabContent) {
+                    tabContent.classList.remove("active");
+                });
+
+                button.classList.add("active");
+                document.getElementById(button.dataset.tab).classList.add("active");
+                message.textContent = "";
+                message.className = "message";
+            });
+        });
+
+        function showMessage(text, type) {
+            message.textContent = text;
+            message.className = "message " + type;
+        }
+
+        function showDashboardLink() {
+            dashboardLink.style.display = "inline-block";
+        }
+
+        document.getElementById("createForm").addEventListener("submit", async function(event) {
             event.preventDefault();
 
-            const householdName = document.getElementById("householdName").value;
+            const householdName = document.getElementById("createHouseholdName").value;
+            const username = document.getElementById("createUsername").value;
 
-            const response = await fetch("/api/household", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    name: householdName
-                })
-            });
+            showMessage("Creating household...", "");
 
-            const data = await response.json();
+            try {
+                const response = await fetch("/api/household", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        householdName: householdName,
+                        username: username
+                    })
+                });
 
-            if (response.ok) {
-                successMessage.innerHTML = `
-                    <h2>Household Created Successfully</h2>
-                    <p>Name: ${data.name}</p>
-                    <p>Household ID: ${data.household_id}</p>
-                    <p>Unique ID: ${data.unique_id}</p>
-                `;
-            } else {
-                successMessage.innerHTML = `
-                    <p>Failed to create household.</p>
-                `;
+                const data = await response.json();
+
+                if (!response.ok) {
+                    showMessage(data.error || "Could not create household.", "error");
+                    return;
+                }
+
+                showMessage(
+                    "Household created! Name: " + data.Household.name +
+                    " | ID: " + data.Household.householdID +
+                    " | Code: " + data.Household.householdCode +
+                    " | User: " + data.User.name,
+                    "success"
+                );
+                showDashboardLink();
+            } catch (error) {
+                showMessage("Could not connect to the server.", "error");
+            }
+        });
+
+        document.getElementById("joinForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const householdCode = document.getElementById("joinHouseholdCode").value;
+            const username = document.getElementById("joinUsername").value;
+
+            showMessage("Joining household...", "");
+
+            try {
+                const response = await fetch("/api/household/join", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        householdCode: householdCode,
+                        username: username
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    showMessage(data.error || "Could not join household.", "error");
+                    return;
+                }
+
+                showMessage(
+                    "Joined household! Name: " + data.Household.name +
+                    " | ID: " + data.Household.householdID +
+                    " | Code: " + data.Household.householdCode +
+                    " | User: " + data.User.name,
+                    "success"
+                );
+                showDashboardLink();
+            } catch (error) {
+                showMessage("Could not connect to the server.", "error");
             }
         });
     </script>
-
 </body>
 </html>
