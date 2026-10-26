@@ -4,7 +4,7 @@ Oct 22, 2026 · @Manju Muralidharan
 
 ## **Names:** Akshaya Pathipati, Oliver Beutz, Katie Le, Raquel Ramos-Ramirez
 
-## **Instructions**
+## **Instructions **
 
 You are not fixing anything today. You are reading. Your team will map the inherited system as it actually exists, not as the handoff docs say it exists.
 
