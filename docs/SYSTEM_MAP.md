@@ -47,7 +47,7 @@ In one sentence: what does this system do, and for whom? Be specific. "It's a we
 
 The system lets users create a household and a username and the system returns a household code so that others can join their household.
 
-**User action we will trace:** Create a user household. They do this by creating a household name and a username, then clicks “Create Household”.
+**User action we will trace:** Create a user household. They do this by creating a household name and a username, then clicks "Create Household".
 
 **User action we will trace:** (for example, "create an account" or "submit a post". It must touch the backend and the database.)
 
@@ -142,6 +142,106 @@ Open the handoff UML and compare it to your diagram. Circle every mismatch on yo
 * ☐ At least one doc-vs-reality mismatch is identified  
 * ☐ Three real questions for the original team  
 * ☐ Every role has a named owner, and the two trace halves meet at the same endpoint.
+
+## **Part 5: Reality check and open questions**
+
+A candidate requirement is your best guess at what the system should do, recovered from what the code does. It is a candidate until someone confirms it. Write at least five.
+
+**Every candidate requirement must:**
+
+1. **Start with "The system shall…"** and describe one behavior only. If you write "and," split it in two.
+
+2. **Be testable.** Write an acceptance criterion: a specific input and the result you expect. "The form should be user friendly" fails this rule.
+
+3. **Cite its source.** Name the trace row, file, or function where you found it. If the code does not do it yet, say so.
+
+4. **Have a status.** Pick one:
+
+   * **Confirmed:** the code does it, and it is clearly intended.
+
+   * **Unconfirmed:** you think it should be true, but you need the original team to confirm.
+
+   * **Suspected bug:** the code does something that looks wrong.
+
+5. **Have a type.** Functional (what it does) or non-functional (security, performance, usability).
+
+Include at least one requirement of each status. The unconfirmed ones and suspected bugs are the most valuable. They are where your next sprint’s work comes from.
+
+Worked example: create a user profile
+
+| ID | Candidate requirement | Type | Source | Status | Acceptance criterion |
+| ----- | ----- | ----- | ----- | ----- | ----- |
+| CR-1 | The system shall create a profile when a logged-in user submits a name. | Functional | Trace rows 3 to 6 | Confirmed | Valid token and name "Ana" returns 201 and a profile id. |
+| CR-2 | The system shall reject a profile with an empty name. | Functional | profileController.js → createProfile() | Confirmed | Empty name returns 400 with "Name is required." |
+| CR-3 | The system shall limit the bio to 280 characters. | Functional | Not in code. Trace row 5 shows no length check. | Unconfirmed | Bio of 281 characters returns 400\. |
+| CR-4 | The system shall reject requests with an expired login token. | Non-functional (security) | auth.js → requireAuth() never checks expiry | Suspected bug | Expired token returns 401\. |
+| CR-5 | The system shall let a user create a profile without a photo. | Functional | Form marks photo optional, but the API rejects it | Suspected bug | Name only, no photo, returns 201\. |
+
+**Your template:**
+
+| ID | Candidate requirement | Type | Source | Status | Acceptance criterion |
+| ----- | ----- | ----- | ----- | ----- | ----- |
+| CR-1 | The system shall allow users to create households. | Functional | server.js  \-\> POST/api/household This inserts a household into the the Household table and generates a household code | Confirmed | Valid householdName and username return created household |
+| CR-2 | The system shall allow users to edit households. | Functional | Not in code. | Unconfirmed | Submitting valid updated household information and ownership returns with updated household information and owner. |
+| CR-3 | The system shall allow users to delete their households. | Functional | Not in code. | Unconfirmed | Confirming delete with a username attached to the household deletes it from the database and returns 202\. |
+| CR-4 | The system shall allow users to view dashboards in households they are a part of. | Functional | index.html:\<a id="dashboardLink" class="dashboard-link" href="dashboard.html"\>Go to Household Dashboard\</a\> Displays a button that leads to the dashboard.  | Unconfirmed | When clicking the dashboard button, the system displays the dashboard for that household instead of a placeholder page. |
+| CR-5 | The system shall allow users to add chores to dashboards they can view. | Functional | Not in code.  | Unconfirmed  | A valid chore object needs to be added to the dashboard where the members of the household need to be able to view the chore.  |
+
+## **Part 6: Reality check and open questions**
+
+A unit test checks one function on its own, with no browser, server, or database involved. Your three test cases are your verification strategy in miniature: each one proves, or disproves, one of your candidate requirements.
+
+**Every test case must:**
+
+1. **Trace to a candidate requirement** by its ID (CR-1, CR-2, and so on).
+
+2. **Name the unit under test:** one file and one function.
+
+3. **Give an exact input and an exact expected output.** "It should work" is not an expected output.
+
+4. **Cover three different kinds of test across your set of three:**
+
+   * **Positive:** valid input is accepted.
+
+   * **Negative:** invalid input is rejected.
+
+   * **Boundary:** input right at the edge of a limit.
+
+5. **Predict pass or fail against the current code.** A test you expect to fail is not a mistake. It documents a gap, and it becomes a backlog item.
+
+You only need to write the test cases, not run them. If your team writes real test code, that is a bonus.
+
+Worked example: create a user profile
+
+The unit under test is validateProfile(profile) in profileController.js. It returns { valid, error }.
+
+| ID | Requirement | Kind | Input | Expected output | Predicted result today |
+| ----- | ----- | ----- | ----- | ----- | ----- |
+| TC-1 | CR-2 | Negative | { name: "", bio: "Hi" } | { valid: false, error: "Name is required" } | Pass |
+| TC-2 | CR-3 | Boundary | { name: "Ana", bio: \<280 characters\> } | { valid: true } | Pass |
+| TC-3 | CR-3 | Negative, boundary | { name: "Ana", bio: \<281 characters\> } | { valid: false, error: "Bio must be 280 characters or fewer" } | Fail: no length check exists yet |
+
+TC-2 and TC-3 sit on either side of the 280 limit. Bugs love edges, so testing 280 and 281 tells you far more than testing 50\. TC-3 is predicted to fail, which makes "Add a bio length check" your first backlog item.
+
+If you want to see TC-3 as real code, here is a Jest version:
+
+test("TC-3: rejects a bio over 280 characters (CR-3)", () \=\> {
+
+  const result \= validateProfile({ name: "Ana", bio: "a".repeat(281) });
+
+  expect(result.valid).toBe(false);
+
+  expect(result.error).toBe("Bio must be 280 characters or fewer");
+
+});
+
+**Your template:**
+
+| ID | Requirement | Kind | Input | Expected output | Predicted result today |
+| ----- | ----- | ----- | ----- | ----- | ----- |
+| TC-1 | CR-1 | Negative | { householdName: "", userName: "SkibidiSigma6767" } | { valid: false, error: "Household name must be a non-empty string." } | Pass |
+| TC-2 | CR-1 | Positive | { householdName: "ourhouse", username: "dorm2306 } | { valid: true, output: "Household created\! Name: ourhouse \| ID:data.Household.householdID  \| Code: data.Household.householdCode  \| User: dorm2306" } | Pass |
+| TC-3 | CR-1 | Negative, Boundary | { householdName: "ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp", userName: "person1" } | { valid: false, error: "Household name must be 250 characters or less" } | Fail |
 
 [image1]: <data:image/png;base64,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>
 
