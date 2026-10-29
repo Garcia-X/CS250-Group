@@ -182,6 +182,7 @@ Worked example: create a user profile
 | ID | Candidate requirement | Type | Source | Status | Acceptance criterion |
 | ----- | ----- | ----- | ----- | ----- | ----- |
 | CR-1 | The system shall allow users to create households. | Functional | server.js  \-\> POST/api/household This inserts a household into the the Household table and generates a household code | Confirmed | Valid householdName and username return created household |
+| CR-5 | The system shall allow users to add chores to dashboards they can view. | Functional | Not in code. | Unconfirmed | A valid chore object needs to be added to the dashboard where the members of the household need to be able to view the chore. |
 
 ## **Part 6: Reality check and open questions**
 
