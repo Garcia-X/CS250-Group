@@ -182,6 +182,7 @@ Worked example: create a user profile
 | ID | Candidate requirement | Type | Source | Status | Acceptance criterion |
 | ----- | ----- | ----- | ----- | ----- | ----- |
 | CR-1 | The system shall allow users to create households. | Functional | server.js  \-\> POST/api/household This inserts a household into the the Household table and generates a household code | Confirmed | Valid householdName and username return created household |
+| CR-3 | The system shall allow users to delete their households. | Functional | Not in code. | Unconfirmed | Confirming delete with a username attached to the household deletes it from the database and returns 202. |
 | CR-5 | The system shall allow users to add chores to dashboards they can view. | Functional | Not in code. | Unconfirmed | A valid chore object needs to be added to the dashboard where the members of the household need to be able to view the chore. |
 
 ## **Part 6: Reality check and open questions**
@@ -236,7 +237,7 @@ test("TC-3: rejects a bio over 280 characters (CR-3)", () \=\> {
 
 | ID | Requirement | Kind | Input | Expected output | Predicted result today |
 | ----- | ----- | ----- | ----- | ----- | ----- |
-| TC-1 |  |  |  |  |  |
+| TC-1 | CR-1 | Negative | { householdName: "", userName: "SkibidiSigma6767" } | { valid: false, error: "Household name must be a non-empty string." } | Pass |
 | TC-2 |  |  |  |  |  |
 | TC-3 | CR-1 | Negative, boundary | { householdName: "ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp",
 userName: "person1" } | { valid: false, error: "Household name must be 250 characters or less"} | fail |
