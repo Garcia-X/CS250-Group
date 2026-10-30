@@ -183,7 +183,7 @@ Worked example: create a user profile
 | ----- | ----- | ----- | ----- | ----- | ----- |
 | CR-1 | The system shall allow users to create households. | Functional | server.js  \-\> POST/api/household This inserts a household into the the Household table and generates a household code | Confirmed | Valid householdName and username return created household |
 | CR-3 | The system shall allow users to delete their households. | Functional | Not in code. | Unconfirmed | Confirming delete with a username attached to the household deletes it from the database and returns 202. |
-| CR-4 | The system shall allow users to view dashboards in households they are a part of.| Functional | index.html= <a id="dashboardLink" class="dashboard-link" href="dashboard.html">Go to Household Dashboard</a> Displays a button that leads to the dashboard.| Unconfirmed | When clicking the dashboard button, the system displays the dashboard for that household instead of a placeholder page. |
+| CR-4 | The system shall allow users to view dashboards in households they are a part of.| Functional | index.html= <a id="dashboardLink"class="dashboard-link" href="dashboard.html">Go to Household Dashboard</a> Displays a button that leads to the dashboard.| Unconfirmed | When clicking the dashboard button, the system displays the dashboard for that household instead of a placeholder page. |
 | CR-5 | The system shall allow users to add chores to dashboards they can view. | Functional | Not in code. | Unconfirmed | A valid chore object needs to be added to the dashboard where the members of the household need to be able to view the chore. |
 
 ## **Part 6: Reality check and open questions**
