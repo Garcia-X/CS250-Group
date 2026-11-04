@@ -1,16 +1,16 @@
-# Testable Requirements: [Project Name]
+# Testable Requirements: [Roommate Chore Manager]
 
-**Team number:** [XX]
-**Inherited from:** Team [XX]
+**Team number:** [11]
+**Inherited from:** Team [10]
 
 ## Who Owns What
 
 | Area of the system | Owner | ID prefix |
 |---|---|---|
-| [example: Accounts and login] | [name] | [initials, like MG] |
-| | | |
-| | | |
-| | | |
+| Log in | Katie Le | KL |
+| Data storage| Akshaya Pathipati| AP |
+| Main feature (create household) | Raquel Ramos-Ramirez | RR |
+| User interface| Oliver Beutz | OB |
 
 <!--
 RULES
