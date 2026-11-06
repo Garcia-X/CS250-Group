@@ -84,7 +84,7 @@ RULES
 
 | ID | Stakeholder | Goal |
 |---|---|---|
-| G-RR-01 | household creator | Create a household with an household name and a username. |
+| G-RR-01 | Household Creator | Create a household with an household name and a username. |
 
 ### Functional Requirements
 
@@ -99,7 +99,7 @@ RULES
 
 | ID | Requirement | Status | From Part 5 |
 |---|---|---|---|
-| NFR-KL-01 | The system shall display a clear response message when a user submits an empty or invalid household name, allowing the user to understand why the household cannot be created. | Confirmed | New |
+| NFR-RR-01 | The system shall display a clear response message when a user submits an empty or invalid household name, allowing the user to understand why the household cannot be created. | Confirmed | New |
 
 ---
 
