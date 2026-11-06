@@ -92,7 +92,7 @@ RULES
 |---|---|---|---|
 | REQ-RR-01 | The system shall allow users to create a household by providing a valid household name and username. | Confirmed | Yes |
 | REQ-RR-02 | The system shall reject household creation requests when the household name is empty or contains only spaces. | Confirmed | New |
-| REW-RR-03 | The system shall reject household creation requests when the username is empty or contains only spaces. | Confirmed | New |
+| REQ-RR-03 | The system shall reject household creation requests when the username is empty or contains only spaces. | Confirmed | New |
 
 
 ### Non-Functional Requirements
