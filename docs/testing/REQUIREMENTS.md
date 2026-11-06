@@ -23,27 +23,27 @@ RULES
 
 ---
 
-## Section: [Your Area] ([Your Name])
+## Section: [Log In] ([Katie Le])
 
 ### Stakeholder Goals
 
 | ID | Stakeholder | Goal |
 |---|---|---|
-| G-XX-01 | | |
+| G-KL-01 | Registered Users/ Roommates| The system should allow users to securely log in to their accounts so they can access their household and chore information |
 
 ### Functional Requirements
 
 | ID | Requirement | Status | From Part 5 |
 |---|---|---|---|
-| REQ-XX-01 | | | |
-| REQ-XX-02 | | | |
-| REQ-XX-03 | | | |
+| REQ-KL-01 | The system shall allow users to log in using a valid username and password| Suspected bug| New |
+| REQ-KL-02 | The system shall reject login attempts when a user enters incorrect username or password and display an error message| Suspected bug| New |
+| REQ-KL-03 | The system shall reject login attempts when the username or password field is empty and display an error message | Suspected Bug | New |
 
 ### Non-Functional Requirements
 
 | ID | Requirement | Status | From Part 5 |
 |---|---|---|---|
-| NFR-XX-01 | | | |
+| NFR-KL-01 | The system shall display a response or error message within 5 seconds after a user submits their information | Suspected bug | New |
 
 ### Example of a Good Rewrite
 
