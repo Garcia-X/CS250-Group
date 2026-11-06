@@ -78,27 +78,28 @@ RULES
 
 ---
 
-## Section: [Your Area] ([Your Name])
+## Section: [Create Household] ([Raquel Ramos])
 
 ### Stakeholder Goals
 
 | ID | Stakeholder | Goal |
 |---|---|---|
-| | | |
+| G-RR-01 | Household Creator | Create a household with an household name and a username. |
 
 ### Functional Requirements
 
 | ID | Requirement | Status | From Part 5 |
 |---|---|---|---|
-| | | | |
-| | | | |
-| | | | |
+| REQ-RR-01 | The system shall allow users to create a household by providing a valid household name and username. | Confirmed | Yes |
+| REQ-RR-02 | The system shall reject household creation requests when the household name is empty or contains only spaces. | Confirmed | New |
+| REQ-RR-03 | The system shall reject household creation requests when the username is empty or contains only spaces. | Confirmed | New |
+
 
 ### Non-Functional Requirements
 
 | ID | Requirement | Status | From Part 5 |
 |---|---|---|---|
-| | | | |
+| NFR-RR-01 | The system shall display a clear response message when a user submits an empty or invalid household name, allowing the user to understand why the household cannot be created. | Confirmed | New |
 
 ---
 
