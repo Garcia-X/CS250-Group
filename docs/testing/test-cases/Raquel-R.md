@@ -83,7 +83,7 @@ HOW TO USE THIS FILE
 **Actual result:** The system displays "Please fill out this field".
 **Status:** Pass
 **Severity:** Major
-**V or V:** Validation
+**V or V:** Verification
 **GitHub Issue:** N/A
 
 ---
@@ -106,7 +106,7 @@ HOW TO USE THIS FILE
 **Actual result:** The system displays a message "Username must be a non-empty string".
 **Status:** Pass
 **Severity:** Major
-**V or V:** Validation
+**V or V:** Verification
 **GitHub Issue:** N/A
 
 ---
@@ -129,7 +129,7 @@ HOW TO USE THIS FILE
 **Actual result:** The system displays "Please fill out this field".
 **Status:** Pass
 **Severity:** Major
-**V or V:** Validation
+**V or V:** Verification
 **GitHub Issue:** N/A
 
 ---
@@ -154,7 +154,7 @@ HOW TO USE THIS FILE
 **Status:** Fail
 **Severity:** Major
 **V or V:** Validation
-**GitHub Issue:**..........................................?
+**GitHub Issue:** [TC-RR-06] System should reject household names with one-character value: https://github.com/Garcia-X/CS250-Group/issues/102
 
 ---
 
@@ -175,10 +175,38 @@ Second input: { householdName: "EnaJuna", userName: "twice" }
 3. Repeat a second time.
 
 
-**Expected result:** The system does not create a household, and displays an already existing account message. 
+**Expected result:** The system does not create a household, and displays an already existing household message. 
 **Actual result:** On the second create household: { Household created! Name: EnaJuna / ID: 2a225c7b-6328-4af9-90e2-c29187a74633 / Code: 3ACO46T / User: twice }
 **Status:** Fail
 **Severity:** Major
-**V or V:** Verification
-**GitHub Issue:**..........................
+**V or V:** Validation
+**GitHub Issue:** [TC-RR-07] System should reject household names that already exist: https://github.com/Garcia-X/CS250-Group/issues/103
+
+
+---
+
+**Test ID:** RR-08
+**From Part 6:** New
+**Written by:** Raquel Ramos
+**Title:** Create household using an existing username
+**Traces to:** REQ-RR-05
+**Test type:** Security.
+**Preconditions:** The application is running and displaying the create a household form.
+**Test data:** 
+First input: { householdName: "twice", userName: "JunaEna" }
+Second input: { householdName: "twice", userName: "JunaEna" }
+
+**Steps:**
+1. Fill out the householdname and username.
+2. Click create household.
+3. Repeat a second time.
+
+
+**Expected result:** The system does not create a household, and displays an already existing username message. 
+**Actual result:** On the second create household: { Household created! Name: twice / ID: 19a68d4e-46fc-4f8b-8d24-7f9690ed2c9f / Code: JCUC457 / User: JunaEna}
+**Status:** Fail
+**Severity:** Major
+**V or V:** Validation
+**GitHub Issue:** [TC-RR-08] System should reject usernames that already exist: https://github.com/Garcia-X/CS250-Group/issues/104
+
 
