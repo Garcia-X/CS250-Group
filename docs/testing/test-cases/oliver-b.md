@@ -18,94 +18,95 @@ HOW TO USE THIS FILE
 
 ---
 
-**Test ID:** TC-OB-01
-**From Part 6:** (old test number, or New)
-**Written by:**
-**Title:**
-**Traces to:**
-**Test type:** (Unit / Integration / System / Acceptance / Boundary Value / Negative / Security)
-**Preconditions:**
-**Test data:**
+**Test ID:** OB-01\
+**From Part 6:** TC-1\
+**Written by:** Oliver\
+**Title:** Submit empty household name\
+**Traces to:** REQ-OB-01\
+**Test type:** Negative Unit Boundary Value\
+**Preconditions:** Uninteracted system\
+**Test data:** { householdName: "", userName: "SkibidiSigma6767" }
 
 **Steps:**
-1.
-2.
-3.
+1. Run the program
+2. Type into username box "SkibidiSigma6767"
+3. Leave household name blank
+4. Press create household
 
-**Expected result:**
-**Actual result:**
-**Status:** (Pass / Fail)
-**Severity:** (Critical / Major / Minor, Fail only)
-**V or V:** (Verification / Validation, Fail only)
+**Expected result:** Household not created and system displays that household name cannot be empty\
+**Actual result:** Pop-up appears pointing to the household field\
+**Status:** Pass\
+
+---
+
+**Test ID:** OB-02\
+**From Part 6:** New\
+**Written by:** Oliver\
+**Title:** Test 249 characters\
+**Traces to:** REQ-OB-01\
+**Test type:** Unit Boundary Value\
+**Preconditions:** Some string name consists of 249 'p's.\
+**Test data:** { householdName: name, userName: "sigma67" }
+
+**Steps:**
+1. Run the program
+2. Type into username box "sigma67"
+3. Type name into the household name field
+4. Press create household
+
+**Expected result:** Status 201\
+**Actual result:** The front end recieves a Household created! affirmative message\
+**Status:** Pass\
+**Severity:** Fail only\
+**V or V:** Fail only\
+**GitHub Issue:** Fail only
+
+---
+
+**Test ID:** OB-03\
+**From Part 6:** New\
+**Written by:** Oliver\
+**Title:** Test 250 characters\
+**Traces to:** REQ-OB-01\
+**Test type:** Negative Unit Boundary Value\
+**Preconditions:** Some string name consists of 249 'p's and a '4'.\
+**Test data:** { householdName: (name + "4"), userName: "skibidi" }
+
+**Steps:**
+1. Run the program
+2. Type into username box "skibidi"
+3. Type (name + '4') into the household name field
+4. Press create household
+
+**Expected result:** Household not created and a relevant error message populates the screen\
+**Actual result:** The front end recieves a Household created! affirmative message\
+**Status:** Fail\
+**Severity:** Minor\
+**V or V:** (Verification / Validation, Fail only)\
 **GitHub Issue:** (#number, Fail only)
 
 ---
 
-**Test ID:**
-**From Part 6:** (old test number, or New)
-**Written by:**
-**Title:**
-**Traces to:**
-**Test type:**
-**Preconditions:**
-**Test data:**
+**Test ID:** OB-04\
+**From Part 6:** New\
+**Written by:** Oliver\
+**Title:** Test 251 characters\
+**Traces to:** REQ-OB-01\
+**Test type:** Negative Unit Boundary Value\
+**Preconditions:** Some string name consists of 249 'p's.\
+**Test data:** { householdName: (name + "67"), userName: "amongUs" }
 
 **Steps:**
-1.
-2.
-3.
+1. Run the program
+2. Type into username box "amongUs"
+3. Type (name + '6' + '7') into the household name field
+4. Press create household
 
-**Expected result:**
-**Actual result:**
-**Status:**
-**Severity:**
-**V or V:**
-**GitHub Issue:**
-
----
-
-**Test ID:**
-**From Part 6:** (old test number, or New)
-**Written by:**
-**Title:**
-**Traces to:**
-**Test type:**
-**Preconditions:**
-**Test data:**
-
-**Steps:**
-1.
-2.
-3.
-
-**Expected result:**
-**Actual result:**
-**Status:**
-**Severity:**
-**V or V:**
-**GitHub Issue:**
-
----
-
-**Test ID:**
-**From Part 6:** (old test number, or New)
-**Written by:**
-**Title:**
-**Traces to:**
-**Test type:**
-**Preconditions:**
-**Test data:**
-
-**Steps:**
-1.
-2.
-3.
-
-**Expected result:**
-**Actual result:**
-**Status:**
-**Severity:**
-**V or V:**
-**GitHub Issue:**
+**Expected result:** Household not created and a relevant error message populates the screen\
+**Actual result:** The front end recieves a Household created! affirmative message\
+**Status:** Fail\
+**Severity:** Minor\
+**V or V:** (Verification / Validation, Fail only)\
+**GitHub Issue:** (#number, Fail only)
 
 ---
