@@ -1,7 +1,7 @@
-# Test Cases: [Your First Name Last Initial]
+# Test Cases: [Raquel R]
 
-**Team number:** [XX]
-**My area:** [from REQUIREMENTS.md]
+**Team number:** [11]
+**My area:** [Main Feature (Create Household)]
 
 <!--
 HOW TO USE THIS FILE
@@ -18,94 +18,167 @@ HOW TO USE THIS FILE
 
 ---
 
-**Test ID:**
-**From Part 6:** (old test number, or New)
-**Written by:**
-**Title:**
-**Traces to:**
-**Test type:** (Unit / Integration / System / Acceptance / Boundary Value / Negative / Security)
-**Preconditions:**
-**Test data:**
+**Test ID:** RR-01
+**From Part 6:** New
+**Written by:** Raquel Ramos
+**Title:** Create household with valid information.
+**Traces to:** REQ-RR-01
+**Test type:** Acceptance
+**Preconditions:** The application is running and displaying the create a household form.
+**Test data:** { householdName: "Acceptance", userName: "Trying" }
 
 **Steps:**
-1.
-2.
-3.
+1. Run the Code.
+2. Make sure its on "Create Household".
+3. Input valid household name and username.
 
-**Expected result:**
-**Actual result:**
-**Status:** (Pass / Fail)
-**Severity:** (Critical / Major / Minor, Fail only)
-**V or V:** (Verification / Validation, Fail only)
-**GitHub Issue:** (#number, Fail only)
+**Expected result:** { "Household created! Name: Acceptance / ID:data.Household.householdID  / Code: data.Household.householdCode  / User: Trying" }
+**Actual result:** { "Household created! Name: Acceptance / ID: dde58198-5115-4e7c-ad03-b478709eaa32 / Code: KMG8K7E / User: Trying" }
+**Status:** Pass
+**Severity:** Major
+**V or V:** Validation
+**GitHub Issue:**  N/A
 
 ---
 
-**Test ID:**
-**From Part 6:** (old test number, or New)
-**Written by:**
-**Title:**
-**Traces to:**
-**Test type:**
-**Preconditions:**
-**Test data:**
+**Test ID:** RR-02
+**From Part 6:** New
+**Written by:** Raquel Ramos
+**Title:** Household name contains only spaces.
+**Traces to:** REQ-RR-02
+**Test type:** Negative
+**Preconditions:** The application is running and displaying the create a household form.
+**Test data:** { householdName: "(Ten spaces)", userName: "Tryingwithspaces" }
+
 
 **Steps:**
-1.
-2.
-3.
+1. Make sure its on "Create Household".
+2. Input household name with only spaces and fill out the username. 
+3. Click create household,
 
-**Expected result:**
-**Actual result:**
-**Status:**
-**Severity:**
-**V or V:**
-**GitHub Issue:**
+**Expected result:** The system does not create a household, and displays an error message asking for a valid household name.
+**Actual result:**  The system displays a message "Household name must be a non-empty string".
+**Status:** Pass
+**Severity:** Major
+**V or V:** Velidation
+**GitHub Issue:** N/A
 
 ---
 
-**Test ID:**
-**From Part 6:** (old test number, or New)
-**Written by:**
-**Title:**
-**Traces to:**
-**Test type:**
-**Preconditions:**
-**Test data:**
+**Test ID:** RR-03
+**From Part 6:** New
+**Written by:** Raquel Ramos
+**Title:** Household name is left empty.
+**Traces to:** REQ-RR-02
+**Test type:** Usability
+**Preconditions:** The application is running and displaying the create a household form.
+**Test data:** { householdName: "", userName: "Tryingwithempty" }
 
 **Steps:**
-1.
-2.
-3.
+1. Make sure its on "Create Household".
+2. Leave houdehold name empty and fill out the username. 
+3. Click create household.
 
-**Expected result:**
-**Actual result:**
-**Status:**
-**Severity:**
-**V or V:**
-**GitHub Issue:**
+**Expected result:** The system does not create a household, and displays an error message asking for a valid household name.
+**Actual result:** The system displays "Please fill out this field".
+**Status:** Pass
+**Severity:** Major
+**V or V:** Validation
+**GitHub Issue:** N/A
 
 ---
 
-**Test ID:**
-**From Part 6:** (old test number, or New)
-**Written by:**
-**Title:**
-**Traces to:**
-**Test type:**
-**Preconditions:**
-**Test data:**
+**Test ID:** RR-04
+**From Part 6:** New
+**Written by:** Raquel Ramos
+**Title:** Username contains only spaces.
+**Traces to:** REQ-RR-03
+**Test type:** Negative
+**Preconditions:** The application is running and displaying the create a household form.
+**Test data:**  { householdName: "Tryingwithspaces", userName: " (Ten spaces" }
 
 **Steps:**
-1.
-2.
-3.
+1. Make sure its on "Create Household".
+2. Input only spaces on the username empty and fill out the household. 
+3. Click create household.
 
-**Expected result:**
-**Actual result:**
-**Status:**
-**Severity:**
-**V or V:**
-**GitHub Issue:**
+**Expected result:** The system does not create a household, and displays an error message asking for a valid username.
+**Actual result:** The system displays a message "Username must be a non-empty string".
+**Status:** Pass
+**Severity:** Major
+**V or V:** Validation
+**GitHub Issue:** N/A
 
 ---
+
+**Test ID:** RR-05
+**From Part 6:** New
+**Written by:** Raquel Ramos
+**Title:** Username is left empty.
+**Traces to:** REQ-RR-03
+**Test type:** Usability
+**Preconditions:** The application is running and displaying the create a household form.
+**Test data:** { householdName: "Tryingwithempty", userName: "" }
+
+**Steps:**
+1. Make sure its on "Create Household".
+2. Leave username empty and fill out the household. 
+3. Click create household.
+
+**Expected result:** The system does not create a household, and displays an error message asking for a valid username.
+**Actual result:** The system displays "Please fill out this field".
+**Status:** Pass
+**Severity:** Major
+**V or V:** Validation
+**GitHub Issue:** N/A
+
+---
+
+**Test ID:** RR-06
+**From Part 6:** New
+**Written by:** Raquel Ramos
+**Title:** Create household with one-character values
+**Traces to:** REQ-RR-01
+**Test type:** Boundary
+**Preconditions:** The application is running and displaying the create a household form.
+**Test data:** { householdName: "R", userName: "onecharacter" }
+
+**Steps:**
+1. Make sure its on "Create Household".
+2. Input one character for household and fill out username. 
+3. Click create household.
+
+
+**Expected result:** The system does not create a household, and displays an error message asking for a valid username. 
+**Actual result:** { Household created! Name: R / ID: b00bd2fd-27e7-48cd-ab3e-32d07538b065 / Code: SXCKIOZ / User: onecharacter }
+**Status:** Fail
+**Severity:** Major
+**V or V:** Validation
+**GitHub Issue:**..........................................?
+
+---
+
+**Test ID:** RR-07
+**From Part 6:** New
+**Written by:** Raquel Ramos
+**Title:** Create household using an existing household name
+**Traces to:** REQ-RR-04
+**Test type:** Security.
+**Preconditions:** The application is running and displaying the create a household form.
+**Test data:** 
+First input: { householdName: "EnaJuna", userName: "twice" }
+Second input: { householdName: "EnaJuna", userName: "twice" }
+
+**Steps:**
+1. Fill out the householdname and username.
+2. Click create household.
+3. Repeat a second time.
+
+
+**Expected result:** The system does not create a household, and displays an already existing account message. 
+**Actual result:** On the second create household: { Household created! Name: EnaJuna / ID: 2a225c7b-6328-4af9-90e2-c29187a74633 / Code: 3ACO46T / User: twice }
+**Status:** Fail
+**Severity:** Major
+**V or V:** Verification
+**GitHub Issue:**..........................
+
