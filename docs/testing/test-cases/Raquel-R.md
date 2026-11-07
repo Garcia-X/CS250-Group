@@ -22,7 +22,7 @@ HOW TO USE THIS FILE
 **From Part 6:** New
 **Written by:** Raquel Ramos
 **Title:** Create household with valid information.
-**Traces to:** REQ-RR-01
+**Traces to:** REQ-RR-01, G-KL-01
 **Test type:** Acceptance
 **Preconditions:** The application is running and displaying the create a household form.
 **Test data:** { householdName: "Acceptance", userName: "Trying" }
@@ -116,7 +116,7 @@ HOW TO USE THIS FILE
 **Written by:** Raquel Ramos
 **Title:** Username is left empty.
 **Traces to:** REQ-RR-03
-**Test type:** Usability
+**Test type:** Negative
 **Preconditions:** The application is running and displaying the create a household form.
 **Test data:** { householdName: "Tryingwithempty", userName: "" }
 
