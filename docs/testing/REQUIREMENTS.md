@@ -67,10 +67,10 @@ RULES
 | ID | Requirement | Status | From Part 5 |
 |---|---|---|---|
 | REQ-AP-01 | The system shall allow users to create households. | Suspected Bug | CR-1 |
-| REQ-AP-02 | The system shall allow users to edit households. | Unconfirmed | CR-2 |
-| REQ-AP-03 | The system shall allow users to delete their households. | Unconfirmed | CR-3 |
-| REQ-AP-04 | The system shall allow users to view dashboards in households they are a part of. | Unconfirmed | CR-4 |
-| REQ-AP-05 | The system shall allow users to add chores to dashboards they can view. | Unconfirmed | CR-5 |
+| REQ-AP-02 | The system shall allow users to edit households. | Suspected Bug | CR-2 |
+| REQ-AP-03 | The system shall allow users to delete their households. | Suspected Bug | CR-3 |
+| REQ-AP-04 | The system shall allow users to view dashboards in households they are a part of. | Suspected Bug | CR-4 |
+| REQ-AP-05 | The system shall allow users to add chores to dashboards they can view. | Suspected Bug | CR-5 |
 
 ### Non-Functional Requirements
 
