@@ -54,7 +54,7 @@ RULES
 
 ---
 
-## Section: [Your Area] ([Your Name])
+## Section: [Data Storage] ([Akshaya Pathipati])
 
 ### Stakeholder Goals
 
