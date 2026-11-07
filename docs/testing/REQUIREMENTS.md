@@ -76,7 +76,7 @@ RULES
 
 | ID | Requirement | Status | From Part 5 |
 |---|---|---|---|
-| NFR-AP-01 | The system shall save a newly created housedhold to the database within 3 second.| Unconfirmed | New |
+| NFR-AP-01 | The system shall save a newly created housedhold to the database within 3 second.| Suspected Bug | New |
 
 ---
 
