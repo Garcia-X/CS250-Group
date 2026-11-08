@@ -22,7 +22,7 @@ HOW TO USE THIS FILE
 **From Part 6:** TC-1
 **Written by:** Oliver Beutz
 **Title:** No houssehold name provided
-**Traces to:** REQ-RR-01
+**Traces to:** REQ-AP-01 and G-AP-01
 **Test type:** Acceptance
 **Preconditions:** Running Roommate Chore Manager 
 **Test data:** 
@@ -32,6 +32,7 @@ householdName: "", userName: "SkibidiSigma6767"
 1. Enter nothing in the household name text box
 2. Enter username "SkibidiSigma6767"
 3. Press the "Create Household" button closest to the username text box
+4. Make sure no new entries are make do the database
 
 **Expected result:** Block the user, tell them they cannot make a household with an empty name, then wait until there is a valid, non-empty input for the household name
 **Actual result:** A popup telling the user "Please fill out this empty field," blocking users from actually creating a new household
@@ -46,7 +47,7 @@ householdName: "", userName: "SkibidiSigma6767"
 **From Part 6:** TC-2
 **Written by:** Raquel Ramos-Ramirez
 **Title:** Happy path expected inputs
-**Traces to:** G-RR-01
+**Traces to:** REQ-AP-01 and G-AP-01
 **Test type:** System (End-2-End) 
 **Preconditions:** Both the username and the household name must be non-empty strings and under 250 characters, running Roommate Chore Manager
 **Test data:** householdName: "ourhouse", username: "dorm2306"
@@ -55,6 +56,7 @@ householdName: "", userName: "SkibidiSigma6767"
 1. Enter household name "ourhouse"
 2. Enter username "dorm2306"
 3. Press the "Create Household" button closest to the username text box
+4. Make sure a new entry is created with the proper household name, username, household ID, and household code
 
 **Expected result:** Household created! Name: ourhouse | ID: some-rng-id-number | Code: some-rng-code | User: dorm2306
 **Actual result:** Household created! Name: ourhouse | ID: 9f231f20-9618-4cf9-b675-691e8e458797 | Code: 5A9L3E2 | User: dorm2306
@@ -69,8 +71,8 @@ householdName: "", userName: "SkibidiSigma6767"
 **From Part 6:** TC-3
 **Written by:** Akshaya Pathipati
 **Title:** Household name over character limit (250 chars)
-**Traces to:** REQ-RR-01
-**Test type:** Negative
+**Traces to:** REQ-AP-01 and G-AP-01
+**Test type:** Boundry
 **Preconditions:** Household name and username are non-empty strings, with household name being over 250 characters, and running Roommate Chore Manager
 **Test data:** householdName: "ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp",
 userName: "person1"
@@ -80,6 +82,7 @@ userName: "person1"
 1. Enter household name "ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp" (251 ps)
 2. Enter username "person1"
 3. Press the "Create Household" button closest to the username text box
+4. Make sure no new entries are make do the database
 
 **Expected result:** Blocking the user from creating a household with an error message akin to "Household name must be 250 characters or less"
 **Actual result:** Household created! Name: ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp | ID: fa8c7376-87bb-4f9e-a903-a244ca905775 | Code: I76TM4X | User: person1
@@ -93,22 +96,23 @@ userName: "person1"
 **Test ID:** TC-AP-04
 **From Part 6:** New
 **Written by:** Akshaya Pathipati
-**Title:** 
-**Traces to:**
-**Test type:**
-**Preconditions:**
-**Test data:**
+**Title:** Adding a chore displays it on the dashboard
+**Traces to:** G-AP-01 and REQ-AP-04
+**Test type:** Integration 
+**Preconditions:** Household has been made and has at least 1 member
+**Test data:** choreTitle: "mop floors", assignedTo: "person1", notes: "don't mop wooden floors", doBy: "11/08/2026"
 
 **Steps:**
-1.
-2.
-3.
+1. Create a new household "house" under the username "person1" 
+2. Go to the dashboard and click the add chore button
+3. Enter the title of the chore, who it's assigned to, special notes, as well as a do by date and click submit
+4. Look at the display of future chores and make sure the newly added chore is there
 
-**Expected result:**
-**Actual result:**
-**Status:**
-**Severity:**
-**V or V:**
+**Expected result:** A new chore with the title, assignee, and a do by date appears in a list of all future chores
+**Actual result:** Nothing happens
+**Status:** Fail
+**Severity:** Major
+**V or V:** Verification
 **GitHub Issue:**
 
 ---
