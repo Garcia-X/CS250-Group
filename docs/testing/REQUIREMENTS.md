@@ -54,27 +54,29 @@ RULES
 
 ---
 
-## Section: [Your Area] ([Your Name])
+## Section: [Data Storage] ([Akshaya Pathipati])
 
 ### Stakeholder Goals
 
 | ID | Stakeholder | Goal |
 |---|---|---|
-| | | |
+| G-AP-01 | Dev Team/IT Team/Households | The system shall store information such as household name, username of the household creator, a list of all household members, all chores in the houshold, what the chore is called, any special notes for the chore, who the chore is assigned to and when the chore needs to be completed by. |
 
 ### Functional Requirements
 
 | ID | Requirement | Status | From Part 5 |
 |---|---|---|---|
-| | | | |
-| | | | |
-| | | | |
+| REQ-AP-01 | The system shall allow users to create households. | Suspected Bug | CR-1 |
+| REQ-AP-02 | The system shall allow users to edit households. | Suspected Bug | CR-2 |
+| REQ-AP-03 | The system shall allow users to delete their households. | Suspected Bug | CR-3 |
+| REQ-AP-04 | The system shall allow users to view dashboards in households they are a part of. | Suspected Bug | CR-4 |
+| REQ-AP-05 | The system shall allow users to add chores to dashboards they can view. | Suspected Bug | CR-5 |
 
 ### Non-Functional Requirements
 
 | ID | Requirement | Status | From Part 5 |
 |---|---|---|---|
-| | | | |
+| NFR-AP-01 | The system shall save a newly created housedhold to the database within 3 second.| Suspected Bug | New |
 
 ---
 
