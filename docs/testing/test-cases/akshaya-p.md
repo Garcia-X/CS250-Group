@@ -89,7 +89,7 @@ userName: "person1"
 **Status:** Fail
 **Severity:** Major
 **V or V:** Verification
-**GitHub Issue:** 
+**GitHub Issue:** #108
 
 ---
 
@@ -113,6 +113,6 @@ userName: "person1"
 **Status:** Fail
 **Severity:** Major
 **V or V:** Verification
-**GitHub Issue:**
+**GitHub Issue:** #109
 
 ---
