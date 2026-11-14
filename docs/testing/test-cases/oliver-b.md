@@ -54,12 +54,9 @@ HOW TO USE THIS FILE
 3. Type name into the household name field
 4. Press create household
 
-**Expected result:** Status 201\
-**Actual result:** The front end recieves a Household created! affirmative message\
-**Status:** Pass\
-**Severity:** Fail only\
-**V or V:** Fail only\
-**GitHub Issue:** Fail only
+**Expected result:** Status 201 and stored in database\
+**Actual result:** The front end recieves a Household created! affirmative message and the database stores the data\
+**Status:** Pass
 
 ---
 
@@ -78,12 +75,9 @@ HOW TO USE THIS FILE
 3. Type (name + '4') into the household name field
 4. Press create household
 
-**Expected result:** Household not created and a relevant error message populates the screen\
-**Actual result:** The front end recieves a Household created! affirmative message\
-**Status:** Fail\
-**Severity:** Minor\
-**V or V:** (Verification / Validation, Fail only)\
-**GitHub Issue:** (#number, Fail only)
+**Expected result:** Household created and a saved to database\
+**Actual result:** The front end recieves a Household created! affirmative message. Upon checking, it is also stored in the database.\
+**Status:** Pass
 
 ---
 
@@ -106,7 +100,29 @@ HOW TO USE THIS FILE
 **Actual result:** The front end recieves a Household created! affirmative message\
 **Status:** Fail\
 **Severity:** Minor\
-**V or V:** (Verification / Validation, Fail only)\
-**GitHub Issue:** (#number, Fail only)
+**V or V:** Verification\
+**GitHub Issue:** #106
+
+---
+**Test ID:** OB-05\
+**From Part 6:** New\
+**Written by:** Oliver\
+**Title:** Test Ease of Use\
+**Traces to:** G-OB-01\
+**Test type:** Acceptance\
+**Preconditions:** [idk]\
+**Test data:** [idk]
+
+**Steps:**
+1. [one]
+2. [two]
+3. [three]
+
+**Expected result:** [result]\
+**Actual result:** [result]\
+**Status:** [pass/fail]\
+**Severity:** [severity]\
+**V or V:** Validation\
+**GitHub Issue:** [#number]
 
 ---
