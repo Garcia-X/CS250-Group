@@ -16,7 +16,13 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^8.1.2",
+    "@babel/preset-env": "^8.0.7",
+    "@babel/preset-react": "^8.0.1",
+    "babel-jest": "^30.5.2",
     "jest": "^30.5.2",
+    "jest-environment-jsdom": "^30.5.2",
+    "jsdom": "^31.0.0",
     "supertest": "^7.3.0"
   }
 }
