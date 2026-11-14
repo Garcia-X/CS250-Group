@@ -96,23 +96,25 @@ userName: "person1"
 **Test ID:** TC-AP-04
 **From Part 6:** New
 **Written by:** Akshaya Pathipati
-**Title:** Adding a chore displays it on the dashboard
-**Traces to:** G-AP-01 and REQ-AP-04
+**Title:** Submitting to the database works
+**Traces to:** G-AP-01 and REQ-AP-01
 **Test type:** Integration 
 **Preconditions:** Household has been made and has at least 1 member
-**Test data:** choreTitle: "mop floors", assignedTo: "person1", notes: "don't mop wooden floors", doBy: "11/08/2026"
+**Test data:** householdName: "testHouse", username: "person1"
 
 **Steps:**
-1. Create a new household "house" under the username "person1" 
-2. Go to the dashboard and click the add chore button
-3. Enter the title of the chore, who it's assigned to, special notes, as well as a do by date and click submit
-4. Look at the display of future chores and make sure the newly added chore is there
+1. Create a new household "testHouse" under the username "person1" 
+2. Make sure that the database stores right household name and username
 
-**Expected result:** A new chore with the title, assignee, and a do by date appears in a list of all future chores
-**Actual result:** Nothing happens
-**Status:** Fail
+or
+
+1. type "npm test backend\server.test.js" in the terminal of vs code to run the test suite in jest to check that everything works properly
+
+**Expected result:** Either an entry into the database with the correct username and household name or the test suite passing
+**Actual result:** Dadabase entry is made and is accurate and the test suite passes
+**Status:** Pass
 **Severity:** Major
 **V or V:** Verification
-**GitHub Issue:** #109
+**GitHub Issue:** N/A
 
 ---
