@@ -1,9 +1,4 @@
-# Test Cases: Oliver B
 
-**Team number:** 11
-**My area:** User Interface
-
-<!--
 HOW TO USE THIS FILE
 1. Copy this file. Name the copy with your first name and last initial, like  maria-g.md
 2. Leave TEMPLATE.md untouched for your teammates.
@@ -23,7 +18,7 @@ HOW TO USE THIS FILE
 **Written by:** Oliver\
 **Title:** Submit empty household name\
 **Traces to:** REQ-OB-01\
-**Test type:** Negative Unit Boundary Value\
+**Test type:** Negative Boundary Value\
 **Preconditions:** Uninteracted system\
 **Test data:** { householdName: "", userName: "SkibidiSigma6767" }
 
@@ -44,7 +39,7 @@ HOW TO USE THIS FILE
 **Written by:** Oliver\
 **Title:** Test 249 characters\
 **Traces to:** REQ-OB-01\
-**Test type:** Unit Boundary Value\
+**Test type:** Boundary Value\
 **Preconditions:** Some string name consists of 249 'p's.\
 **Test data:** { householdName: name, userName: "sigma67" }
 
@@ -65,7 +60,7 @@ HOW TO USE THIS FILE
 **Written by:** Oliver\
 **Title:** Test 250 characters\
 **Traces to:** REQ-OB-01\
-**Test type:** Negative Unit Boundary Value\
+**Test type:** Boundary Value\
 **Preconditions:** Some string name consists of 249 'p's and a '4'.\
 **Test data:** { householdName: (name + "4"), userName: "skibidi" }
 
@@ -86,7 +81,7 @@ HOW TO USE THIS FILE
 **Written by:** Oliver\
 **Title:** Test 251 characters\
 **Traces to:** REQ-OB-01\
-**Test type:** Negative Unit Boundary Value\
+**Test type:** Negative Boundary Value\
 **Preconditions:** Some string name consists of 249 'p's.\
 **Test data:** { householdName: (name + "67"), userName: "amongUs" }
 
@@ -122,6 +117,23 @@ HOW TO USE THIS FILE
 
 **Expected result:** The user is able to create household within 1 minute.\
 **Actual result:** The user created household in 55 seconds\
-**Status:** pass\
+**Status:** Pass
+
+---
+**Test ID:** OB-06\
+**From Part 6:** New\
+**Written by:** Oliver\
+**Title:** Displays messages\
+**Traces to:** REQ-OB-04\
+**Test type:** Unit\
+**Preconditions:** The system is open to the create household page and no input is typed in any fields\
+**Test data:** { textContent: "Test message", className: "message success" }
+
+**Steps:**
+1. run npm test
+
+**Expected result:** Pass\
+**Actual result:** Pass\
+**Status:** Pass
 
 ---
