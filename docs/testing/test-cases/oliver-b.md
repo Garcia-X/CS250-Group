@@ -111,18 +111,17 @@ HOW TO USE THIS FILE
 **Traces to:** G-OB-01\
 **Test type:** Acceptance\
 **Preconditions:** The system is open to the create household page and no input is typed in any fields. The user is instructed to create a household.\
-**Test data:** [idk]
+**Test data:** { householdName: "Vault 111", userName: "The Lone Survivor"}
 
 **Steps:**
-1. [one]
-2. [two]
-3. [three]
+1. Open the system
+2. Give the computer to user unfamiliar with the system
+3. She types household name in the correct field
+4. She types usernmae in the correct field
+5. She submits the data
 
 **Expected result:** The user is able to create household within 1 minute.\
-**Actual result:** [result]\
-**Status:** [pass/fail]\
-**Severity:** [severity]\
-**V or V:** Validation\
-**GitHub Issue:** [#number]
+**Actual result:** The user created household in 55 seconds\
+**Status:** pass\
 
 ---
