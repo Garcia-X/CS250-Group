@@ -123,4 +123,4 @@ RULES
 
 | ID | Requirement | Status | From Part 5 |
 |---|---|---|---|
-| NFR-OB-04 | The User interface should be intuitive for unfamiliar users to navigate. | Confirmed | New |
+| NFR-OB-01 | The User interface should be intuitive for unfamiliar users to navigate. | Confirmed | New |
