@@ -114,9 +114,10 @@ RULES
 
 | ID | Requirement | Status | From Part 5 |
 |---|---|---|---|
-| REQ-OB-01 | The system shall allow users to create households by giving a nonempty string of 250 characters or fewer. | Unconfirmed | CR-1 (Unconfirmed): The system shall allow users to create households. |
-| REQ-OB-02 | The system shall allow users to delete households they are enrolled in for all users enrolled in it. | Unconfirmed | CR-3 (Unconfirmed): The system shall allow users to delete their households. |
-| REQ-OB-03 | The system shall allow users to access and view dashboards in households they are enrolled in. | Unconfirmed | CR-4 (Unconfirmed): The system shall allow users to view dashboards in households they are a part of. |
+| REQ-OB-01 | The system shall allow users to create households by giving a nonempty string of 250 characters or fewer. | Suspected Bug | CR-1 (Unconfirmed): The system shall allow users to create households. |
+| REQ-OB-02 | The system shall allow users to delete households they are enrolled in for all users enrolled in it. | Suspected Bug | CR-3 (Unconfirmed): The system shall allow users to delete their households. |
+| REQ-OB-03 | The system shall allow users to access and view dashboards in households they are enrolled in. | Suspected Bug | CR-4 (Unconfirmed): The system shall allow users to view dashboards in households they are a part of. |
+| REQ-OB-04 | The system shall be able to interact with messages to convey things to the user. | Confimred | New |
 
 ### Non-Functional Requirements
 
