@@ -13,17 +13,16 @@ Fill this in **after** everyone's work is merged. One row per requirement.
 | REQ-KL-01 | New  | Katie Le  | TC-KL-01 | Fail | #97 |
 | REQ-KL-02 | New  | Katie Le  | TC-KL-02 | Fail | #98 |
 | REQ-KL-03 | New  | Katie Le  | TC-KL-03 | Fail | #99 |
-| REQ-AP-01 | CR-1 | Akshaya P | TC-AP-01, TC-AP-02, TC-AP-03, TC-AP-04 | Pass, Pass, Pass, Fail (respectively)| #108 |
+| NFR-KL-01 | New  | Katie Le  | TC-KL-04 | Fail | #100 |
+| REQ-AP-01 | CR-1 | Akshaya P | TC-AP-01, TC-AP-02, TC-AP-03, TC-AP-04 | 3 Pass, 1 Fail (respectively)| #108 |
 | REQ-RR-01 | CR-1 | Raquel R  | TC-RR-01, TC- RR-06  | 1 Pass, 1 Fail | #102 |
 | REQ-RR-02 | New  | Raquel R  | TC-RR-02, TC-RR-03 | 2 Pass | N/A |
 | REQ-RR-03 | New  | Raquel R  | TC-RR-04, TC-RR-05 | 2 Pass | N/A |
 | REQ-RR-04 | New  | Raquel R  | TC-RR-07 | Fail | #103 |
 | REQ-RR-05 | New  | Raquel R  | TC-RR-08 | Fail | #104 |
-| | | | | | |
-| | | | | | |
-| | | | | | |
-| | | | | | |
-| | | | | | |
+| REQ-OB-01 | CR-1 | Oliver B  | OB-01, OB-02, OB-03, OB-04 | 3 Pass, 1 Fail | #106 |
+| NFR-OB-01 | New  | Oliver B  | OB-05 | Pass | N/A |
+| REQ-OB-04 | New  | Oliver B  | OB-06 | Pass | N/A |
 
 ## Gaps
 
@@ -31,7 +30,12 @@ List any requirement with no test, any test with no requirement, and any Part 5 
 
 - REQ-AP-02
 - REQ-AP-03
+- REQ-AP-04
 - REQ-AP-05
+- REQ-OB-02
+- REQ-OB-03
+- NFR-AP-01
+- NFR-RR-01
 
 ## Test Type Coverage
 
@@ -39,7 +43,7 @@ Put a Test ID next to each type. Team minimum: all 7.
 
 | Test type | Test ID |
 |---|---|
-| Unit | |
+| Unit | OB-06 |
 | Integration | TC-AP-04  |
 | System (E2E) | TC-KL-04 |
 | Acceptance | TC-AP-01 |
@@ -63,15 +67,15 @@ A Validation finding means the system does what the requirement says, but the re
 
 | | Count |
 |---|---|
-| Part 5 requirements carried over | |
-| New requirements added | |
-| Part 6 tests upgraded (out of 3) | |
-| Total requirements | |
-| Total test cases | |
-| Passed | |
-| Failed | |
-| Issues opened | |
-| Critical issues | |
+| Part 5 requirements carried over | 4 |
+| New requirements added | 12 |
+| Part 6 tests upgraded (out of 3) | 3 |
+| Total requirements | 21 |
+| Total test cases | 22 |
+| Passed | 13 |
+| Failed | 9 |
+| Issues opened | 19 |
+| Critical issues | 0 |
 
 **In one sentence, would you ship this system today? Why or why not?**
 
