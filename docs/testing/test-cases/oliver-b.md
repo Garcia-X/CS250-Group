@@ -1,9 +1,4 @@
-# Test Cases: Oliver B
 
-**Team number:** 11
-**My area:** User Interface
-
-<!--
 HOW TO USE THIS FILE
 1. Copy this file. Name the copy with your first name and last initial, like  maria-g.md
 2. Leave TEMPLATE.md untouched for your teammates.

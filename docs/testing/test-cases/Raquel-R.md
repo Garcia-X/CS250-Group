@@ -18,7 +18,7 @@ HOW TO USE THIS FILE
 
 ---
 
-**Test ID:** RR-01
+**Test ID:** TC-RR-01
 **From Part 6:** New
 **Written by:** Raquel Ramos
 **Title:** Create household with valid information.
@@ -41,7 +41,7 @@ HOW TO USE THIS FILE
 
 ---
 
-**Test ID:** RR-02
+**Test ID:** TC-RR-02
 **From Part 6:** New
 **Written by:** Raquel Ramos
 **Title:** Household name contains only spaces.
@@ -65,7 +65,7 @@ HOW TO USE THIS FILE
 
 ---
 
-**Test ID:** RR-03
+**Test ID:** TC-RR-03
 **From Part 6:** New
 **Written by:** Raquel Ramos
 **Title:** Household name is left empty.
@@ -88,7 +88,7 @@ HOW TO USE THIS FILE
 
 ---
 
-**Test ID:** RR-04
+**Test ID:** TC-RR-04
 **From Part 6:** New
 **Written by:** Raquel Ramos
 **Title:** Username contains only spaces.
@@ -111,7 +111,7 @@ HOW TO USE THIS FILE
 
 ---
 
-**Test ID:** RR-05
+**Test ID:** TC-RR-05
 **From Part 6:** New
 **Written by:** Raquel Ramos
 **Title:** Username is left empty.
@@ -134,7 +134,7 @@ HOW TO USE THIS FILE
 
 ---
 
-**Test ID:** RR-06
+**Test ID:** TC-RR-06
 **From Part 6:** New
 **Written by:** Raquel Ramos
 **Title:** Create household with one-character values
@@ -158,7 +158,7 @@ HOW TO USE THIS FILE
 
 ---
 
-**Test ID:** RR-07
+**Test ID:** TC-RR-07
 **From Part 6:** New
 **Written by:** Raquel Ramos
 **Title:** Create household using an existing household name
@@ -185,7 +185,7 @@ Second input: { householdName: "EnaJuna", userName: "twice" }
 
 ---
 
-**Test ID:** RR-08
+**Test ID:** TC-RR-08
 **From Part 6:** New
 **Written by:** Raquel Ramos
 **Title:** Create household using an existing username
