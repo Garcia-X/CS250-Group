@@ -13,8 +13,7 @@ Fill this in **after** everyone's work is merged. One row per requirement.
 | REQ-KL-01 | New  | Katie Le  | TC-KL-01 | Fail | #97 |
 | REQ-KL-02 | New  | Katie Le  | TC-KL-02 | Fail | #98 |
 | REQ-KL-03 | New  | Katie Le  | TC-KL-03 | Fail | #99 |
-| NFR-KL-01 | New  | Katie Le  | TC-KL-04 | Fail | #100 |
-| REQ-AP-01 | CR-1 | Akshaya P | TC-AP-01, TC-AP-02, TC-AP-03, TC-AP-04 | 3 Pass, 1 Fail (respectively)| #108 |
+| REQ-AP-01 | CR-1 | Akshaya P | TC-AP-01, TC-AP-02, TC-AP-03, TC-AP-04 | Pass, Pass, Fail, Pass (respectively)| #108 |
 | REQ-RR-01 | CR-1 | Raquel R  | TC-RR-01, TC- RR-06  | 1 Pass, 1 Fail | #102 |
 | REQ-RR-02 | New  | Raquel R  | TC-RR-02, TC-RR-03 | 2 Pass | N/A |
 | REQ-RR-03 | New  | Raquel R  | TC-RR-04, TC-RR-05 | 2 Pass | N/A |
