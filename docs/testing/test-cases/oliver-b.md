@@ -92,7 +92,7 @@ HOW TO USE THIS FILE
 4. Press create household
 
 **Expected result:** Household not created and a relevant error message populates the screen\
-**Actual result:** The front end recieves a Household created! affirmative message\
+**Actual result:** The front end receives a Household created! affirmative message\
 **Status:** Fail\
 **Severity:** Minor\
 **V or V:** Verification\

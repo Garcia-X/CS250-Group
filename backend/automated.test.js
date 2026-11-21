@@ -1,8 +1,9 @@
 const request = require("supertest");
 const app = require("./server");
 
+
 test("Testing the API endpoints and the HTTP", async () => {
-    const response = await request(app)
+    let response = await request(app)
         .post("/api/household")
         
         .send({ householdName: "Test Household", username: "Test" });
@@ -22,10 +23,20 @@ test("Testing the API endpoints and the HTTP", async () => {
         user_id: expect.any(String),
         householdID: expect.any(String)
       }
-
-
     });
+    
+    response = await request(app)
+        .delete("/api/household/households")
 
-
-
+        .send({ householdName: "Test Household" });
+    
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual({
+        Household:  {
+            householdCode: expect.any(String),
+            householdID: expect.any(String),
+            name: "Test Household",
+        }
+    })
+    
 });
