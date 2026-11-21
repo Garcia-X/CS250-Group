@@ -24,14 +24,11 @@ app.post("/api/household", async (req, res) => {
             error: "Household name must be a non-empty string."
         });
     }
-<<<<<<< HEAD
     if (householdName.trim().length > 250) {
         return res.status(400).json({
             error: "Household name must be at most 250 characters."
         });
     }
-=======
->>>>>>> 6513b57 (Added delete household functionality)
     if (typeof username !== "string" || username.trim().length ===0) {
         return res.status(400).json({
             error: "Username must be a non-empty string."
