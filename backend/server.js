@@ -19,16 +19,16 @@ app.use(express.static(path.join(__dirname)));
 app.post("/api/household", async (req, res) => {
     const { householdName, username } = req.body || {};
 
-        if (typeof householdName !== "string" || householdName.trim().length ===0) {
+    if (typeof householdName !== "string" || householdName.trim().length ===0) {
         return res.status(400).json({
             error: "Household name must be a non-empty string."
         });
     }
-        if (typeof username !== "string" || username.trim().length ===0) {
-            return res.status(400).json({
-                error: "Username must be a non-empty string."
-            });
-        }
+    if (typeof username !== "string" || username.trim().length ===0) {
+        return res.status(400).json({
+            error: "Username must be a non-empty string."
+        });
+    }
     const householdCode = Math.random()
         .toString(36)
         .substring(2, 9)
@@ -108,7 +108,6 @@ app.post("/api/household/join", async (req, res) => {
         }
         if(householdCodeData.length == 0){
             return res.status(404).json({ error: "Household code doesn't exist"});
-
         }
 
     const {  data: userData, error: userError } = await supabase
@@ -143,10 +142,31 @@ app.post("/api/household/join", async (req, res) => {
     }
     res.status(201).json({Household: householdCodeData[0], User: userData[0], members: memberData[0]});
     console.log(householdCodeData[0], userData[0], memberData[0]);
-
-    
 });
 
+app.delete("/api/household/households", async (req, res) => {
+    const { householdName } = req.body || {};
+    if (typeof householdName !== "string" || householdName.trim().length ===0) {
+        return res.status(400).json({error: "Household name must be a non-empty string."});
+    }
+
+    const { data: householdData, error: householdError } = await supabase
+        .from('Household')
+        .delete()
+        .eq('name', householdName.trim())
+        .select();
+    
+    if (householdError) {
+        console.log(householdError);
+        return res.status(500).json({ error: "This server failed the connection between node express and Supabase"});
+    }
+    if(householdData.length == 0){
+        return res.status(404).json({ error: "Household doesn't exist"});
+    }
+
+    res.status(200).json({Household: householdData[0]});
+    console.log(householdData[0]);
+})
 
 if (require.main === module) {
     app.listen(PORT, () => {
