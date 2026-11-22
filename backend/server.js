@@ -13,8 +13,10 @@ const supabase = createClient(
 );
 
 const PORT = 3000;
-//Serve static frontend files
-app.use(express.static(path.join(__dirname)));
+
+
+const frontendPath = path.join(__dirname, "../frontend");
+app.use(express.static(frontendPath));
 
 app.post("/api/household", async (req, res) => {
     const { householdName, username } = req.body || {};
@@ -29,10 +31,31 @@ app.post("/api/household", async (req, res) => {
                 error: "Username must be a non-empty string."
             });
         }
-    const householdCode = Math.random()
+    /* Checks if household name already exist, if yes, displays and error message*/ 
+        const { data: existingHousehold, error: existingHouseholdError } = await supabase
+        .from("Household")
+        .select("householdID")
+        .ilike("name", householdName.trim())
+        .limit(1);
+
+    if (existingHouseholdError) {
+        console.log(existingHouseholdError);
+        return res.status(500).json({
+            error: "This server failed the connection between node express and Supabase"
+        });
+    }
+
+    if (existingHousehold.length > 0) {
+        return res.status(409).json({
+            error: "This household name already exists. Please enter a different household name."
+        });
+    }
+   
+        const householdCode = Math.random()
         .toString(36)
         .substring(2, 9)
         .toUpperCase();
+   
 
     const { data: householdData, error: householdError } = await supabase
         .from("Household")
@@ -49,8 +72,28 @@ app.post("/api/household", async (req, res) => {
         return res.status(500).json({ error: "This server failed the connection between node express and Supabase"});
     }
 
-    //Used ai to understand and implement the destructuring of the objects 
-    const {  data: userData, error: userError } = await supabase
+    /* Checks if the username already exist, if yes, then it displays an error message/*/ 
+    const { data: existingUser, error: existingUserError } = await supabase
+        .from("User")
+        .select("user_id")
+        .ilike("name", username.trim())
+        .limit(1);
+
+    if (existingUserError) {
+        console.log(existingUserError);
+        return res.status(500).json({
+            error: "This server failed the connection between node express and Supabase"
+        });
+    }
+
+    if (existingUser.length > 0) {
+        return res.status(409).json({
+            error: "This username already exists. Please enter a different username."
+        });
+    }
+
+   
+    const { data: userData, error: userError } = await supabase
         .from("User")
         .insert([
             {
@@ -58,6 +101,7 @@ app.post("/api/household", async (req, res) => {
             }
         ])
         .select();
+       
 
     if (userError) {
         console.log(userError);
