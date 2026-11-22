@@ -4,7 +4,7 @@
 - One sentence: code bug or test bug, and how you knew
 - AI disclosure note, if a tool helped you find, explain, or fix the bug
 
-  -----Use this templet, if you want:
+  -----Use this templet, if you want: Click on edit, so you can copy🌻.
   # Name
 
 ## Bug 1: Issue #N
