@@ -13,13 +13,15 @@ The bug was that the system allowed for households to be created even if the pro
 
 AI Disclosure: none
 
-## Bug 2: Issue #N
+## Bug 2: Issue #73
 
-- Issue: [GitHub Issue](LINK)
-- PR: [Pull Request](LINK)
-- Before: ![Before](screenshots/raquel_ramos_issueN_before.png)
-- After: ![After](screenshots/raquel_ramos_issueN_after.png)
+- Issue: [GitHub Issue #73](https://github.com/Garcia-X/CS250-Group/issues/73)
+- PR: [Pull Request #133](https://github.com/Garcia-X/CS250-Group/pull/133)
+- Before: ![Before](screenshots/akshaya_pathipati_issue73_before.png)
+- After: ![After](screenshots/akshaya_pathipati_issue73_after.png)
 
-Explanation of the bug and how it was identified.
+Explanation of the bug and how it was identified.  
 
-AI Disclosure: [If applicable]
+When trying to submit the form, if the user double clicks the submit button by accident, two forms are submitted. This issue was found by the previous dev team when they were testing the system.  
+
+AI Disclosure: None. 
