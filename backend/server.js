@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname)));
 app.post("/api/household", async (req, res) => {
     const { householdName, username } = req.body || {};
 
-    if (typeof householdName !== "string" || householdName.trim().length ===0) {
+    if (typeof householdName !== "string" || householdName.trim().length === 0) {
         return res.status(400).json({
             error: "Household name must be a non-empty string."
         });
@@ -29,7 +29,7 @@ app.post("/api/household", async (req, res) => {
             error: "Household name must be at most 250 characters."
         });
     }
-    if (typeof username !== "string" || username.trim().length ===0) {
+    if (typeof username !== "string" || username.trim().length === 0) {
         return res.status(400).json({
             error: "Username must be a non-empty string."
         });
@@ -154,13 +154,11 @@ app.delete("/api/household/households", async (req, res) => {
     if (typeof householdName !== "string" || householdName.trim().length ===0) {
         return res.status(400).json({error: "Household name must be a non-empty string."});
     }
-
     const { data: householdData, error: householdError } = await supabase
         .from('Household')
         .delete()
         .eq('name', householdName.trim())
         .select();
-    
     if (householdError) {
         console.log(householdError);
         return res.status(500).json({ error: "This server failed the connection between node express and Supabase"});
@@ -168,10 +166,9 @@ app.delete("/api/household/households", async (req, res) => {
     if(householdData.length == 0){
         return res.status(404).json({ error: "Household doesn't exist"});
     }
-
     res.status(200).json({Household: householdData[0]});
     console.log(householdData[0]);
-})
+});
 
 if (require.main === module) {
     app.listen(PORT, () => {
