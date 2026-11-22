@@ -16,7 +16,7 @@ AI Disclosure: none
 ## Bug 2: Issue #73
 
 - Issue: [GitHub Issue #73](https://github.com/Garcia-X/CS250-Group/issues/73)
-- PR: [Pull Request #133](https://github.com/Garcia-X/CS250-Group/pull/133)
+- PR: [Pull Request #132](https://github.com/Garcia-X/CS250-Group/pull/132)
 - Before: ![Before](screenshots/akshaya_pathipati_issue73_before.png)
 - After: ![After](screenshots/akshaya_pathipati_issue73_after.png)
 
