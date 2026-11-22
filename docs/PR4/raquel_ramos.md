@@ -7,18 +7,19 @@
 - Before: ![Before](screenshots/raquel_ramos_issue103_before.png)
 - After: ![After](screenshots/raquel_ramos_issueN_after.png)
 
-This was a code bug because the application
-did not behave as expected.
+## Code Bug:
+- This is a code bug, because there is no code that checks if the household name already exist.
 
-AI Disclosure: [If applicable]
+AI Disclosure: [Use AI from VS code to fix small error while I code, also use ChatGPT to help me find the problem when my code didn't save.]
 
 ## Bug 2: Issue #104
 
 - Issue: [[TC-RR-08] System should reject usernames that already exist](https://github.com/Garcia-X/CS250-Group/issues/104)
 - PR: [Pull Request](LINK)
-- Before: ![Before](screenshots/raquel_ramos_issueN_before.png)
+- Before: ![Before](screenshots/raquel_ramos_issue104_before.png)
 - After: ![After](screenshots/raquel_ramos_issueN_after.png)
 
-Explanation of the bug and how it was identified.
+## Code Bug:
+- This is a code bug, because there is no code that checks if the  username already exist.
 
-AI Disclosure: [If applicable]
+AI Disclosure: [Use AI from VS code to fix small error while I code, also ChatGPT help me create the templet for this document]
