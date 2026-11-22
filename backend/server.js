@@ -112,55 +112,60 @@ app.post("/api/household", async (req, res) => {
 
 
 });
-//join existing household
+ //join existing household
 app.post("/api/household/join", async (req, res) => {
     const { householdCode, username } = req.body || {};
 
     if (typeof householdCode !== "string" || householdCode.trim().length === 0) {
-        return res.status(400).json({ error: "Household code must be a non-empty string." });
+        return res.status(400).json({
+            error: "Household code must be a non-empty string."
+        });
     }
+
     if (typeof username !== "string" || username.trim().length === 0) {
         return res.status(400).json({
             error: "Username must be a non-empty string."
         });
     }
 
-        //look up household code
+    // Look up household code
     const { data: householdCodeData, error: householdCodeError } = await supabase
         .from("Household")
         .select()
-        .eq('householdCode', householdCode.trim())
+        .eq("householdCode", householdCode.trim());
 
-        }
-        //insert user
-    const {  data: userData, error: userError } = await supabase
     if (householdCodeError) {
         console.log(householdCodeError);
-        return res.status(500).json({ error: "This server failed the connection between node express and Supabase" });
-    }
-    if (householdCodeData.length == 0) {
-        return res.status(404).json({ error: "Household code doesn't exist" });
-
+        return res.status(500).json({
+            error: "This server failed the connection between node express and Supabase"
+        });
     }
 
-    const { data: userData, error: userError } = await supabase
+    if (!householdCodeData || householdCodeData.length === 0) {
+        return res.status(404).json({
+            error: "Household code doesn't exist"
+        });
+    }
+
+    // Insert user
+       const { data: userData, error: userError } = await supabase
         .from("User")
         .insert([
             {
-                name: username.trim(),
+                name: username.trim()
             }
         ])
         .select();
 
     if (userError) {
         console.log(userError);
-        return res.status(500).json({ error: "This server failed the connection between node express and Supabase" });
+        return res.status(500).json({
+            error: "This server failed the connection between node express and Supabase"
+        });
     }
 
-        
-        //insert member
-
-    const { data: memberData, error: memberError } = await supabase
+    // Insert member
+       const { data: memberData, error: memberError } = await supabase
         .from("members")
         .insert([
             {
@@ -172,12 +177,18 @@ app.post("/api/household/join", async (req, res) => {
 
     if (memberError) {
         console.log(memberError);
-        return res.status(500).json({ error: "This server failed the connection between node express and Supabase" });
+        return res.status(500).json({
+            error: "This server failed the connection between node express and Supabase"
+        });
     }
-    res.status(201).json({ Household: householdCodeData[0], User: userData[0], members: memberData[0] });
+
+    res.status(201).json({
+        Household: householdCodeData[0],
+        User: userData[0],
+        members: memberData[0]
+    });
+
     console.log(householdCodeData[0], userData[0], memberData[0]);
-
-
 });
 
 app.get("/api/household/:householdID/:userID", async (req, res) => {
