@@ -25,9 +25,7 @@ app.post("/api/household", async (req, res) => {
         });
     }
     if (householdName.trim().length > 250) {
-        return res.status(400).json({
-            error: "Household name must be at most 250 characters."
-        });
+        return res.status(400).json({ error: "Household name must be at most 250 characters." });
     }
     if (typeof username !== "string" || username.trim().length === 0) {
         return res.status(400).json({
