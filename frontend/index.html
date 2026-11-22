@@ -148,8 +148,16 @@
         document.getElementById("createForm").addEventListener("submit", async function(event) {
             event.preventDefault();
 
+            const submitButton = this.querySelector("button[type='submit']");
+
+            if (submitButton.disabled) {
+                return;
+            }
             const householdName = document.getElementById("createHouseholdName").value;
             const username = document.getElementById("createUsername").value;
+
+            submitButton.disabled = true;
+            submitButton.textContent = "Creating...";
 
             showMessage("Creating household...", "");
 
@@ -163,7 +171,12 @@
                     })
                 });
 
-                const data = await response.json();
+                let data;
+                try {
+                    data = await response.json();
+                } catch (error) {
+                    throw new Error("Invalid JSON response from server.");
+                }
 
                 if (!response.ok) {
                     showMessage(data.error || "Could not create household.", "error");
@@ -179,15 +192,26 @@
                 );
                 showDashboardLink();
             } catch (error) {
-                showMessage("Could not connect to the server.", "error");
+                showMessage(error.message || "Could not connect to the server.", "error");
+            }
+            finally {
+                submitButton.disabled = false;
+                submitButton.textContent = "Create Household";
             }
         });
 
         document.getElementById("joinForm").addEventListener("submit", async function(event) {
             event.preventDefault();
+            const submitButton = this.querySelector("button[type='submit']");
 
+            if (submitButton.disabled) {
+                return;
+            }
             const householdCode = document.getElementById("joinHouseholdCode").value;
             const username = document.getElementById("joinUsername").value;
+
+            submitButton.disabled = true;
+            submitButton.textContent = "Joining...";
 
             showMessage("Joining household...", "");
 
@@ -200,8 +224,13 @@
                         username: username
                     })
                 });
+                let data;
 
-                const data = await response.json();
+                try {
+                    data = await response.json();
+                } catch (error) {
+                    throw new Error("Invalid JSON response from server.");
+                }
 
                 if (!response.ok) {
                     showMessage(data.error || "Could not join household.", "error");
@@ -217,7 +246,10 @@
                 );
                 showDashboardLink();
             } catch (error) {
-                showMessage("Could not connect to the server.", "error");
+                showMessage(error.message || "Could not connect to the server.", "error");
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = "Join Household";
             }
         });
     </script>
