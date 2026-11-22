@@ -3,7 +3,7 @@
 ## Bug 1: Issue #102
 
 - Issue: [GitHub Issue #102](https://github.com/Garcia-X/CS250-Group/issues/102)
-- PR: [Pull Request](LINK)
+- PR: [Pull Request #132](https://github.com/Garcia-X/CS250-Group/pull/132)
 - Before: ![Before](screenshots/akshaya_pathipati_issue102_before.png)
 - After: ![After](screenshots/akshaya_pathipati_issue102_after.png)
 
