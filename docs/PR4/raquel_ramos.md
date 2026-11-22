@@ -3,7 +3,7 @@
 ## Bug 1: Issue #103
 
 - Issue: [[TC-RR-07] System should reject household names that already exist](https://github.com/Garcia-X/CS250-Group/issues/103)
-- PR: [Pull Request](LINK)
+- PR: [Pull Request](https://github.com/Garcia-X/CS250-Group/pull/130)
 - Before: ![Before](screenshots/raquel_ramos_issue103_before.png)
 - After: ![After](screenshots/raquel_ramos_issue103_after.png)
 
@@ -15,7 +15,7 @@ AI Disclosure: [Use AI from VS code to fix small error while I code, also use Ch
 ## Bug 2: Issue #104
 
 - Issue: [[TC-RR-08] System should reject usernames that already exist](https://github.com/Garcia-X/CS250-Group/issues/104)
-- PR: [Pull Request](LINK)
+- PR: [Pull Request](https://github.com/Garcia-X/CS250-Group/pull/130)
 - Before: ![Before](screenshots/raquel_ramos_issue104_before.png)
 - After: ![After](screenshots/raquel_ramos_issue104_after.png)
 
