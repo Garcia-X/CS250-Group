@@ -1,24 +1,15 @@
-// const { JSDOM } = require('jsdom');
-// const fs = require('fs');
-// const path = require('path');
-
-// const indexPath = path.join(__dirname, "/index.html");
-
-// const dom = new JSDOM(fs.readFileSync(indexPath, 'utf8'));
-//const document = dom.window.document;
-
 const tabButtons = document.querySelectorAll(".tab-button");
 const tabContents = document.querySelectorAll(".tab-content");
 const message = document.getElementById("message");
 const dashboardLink = document.getElementById("dashboardLink");
 
-tabButtons.forEach(function(button) {
-    button.addEventListener("click", function() {
-        tabButtons.forEach(function(tabButton) {
+tabButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        tabButtons.forEach(function (tabButton) {
             tabButton.classList.remove("active");
         });
 
-        tabContents.forEach(function(tabContent) {
+        tabContents.forEach(function (tabContent) {
             tabContent.classList.remove("active");
         });
 
@@ -37,9 +28,22 @@ function showMessage(text, type) {
 function showDashboardLink() {
     dashboardLink.style.display = "inline-block";
 }
-/*
-document.getElementById("createForm").addEventListener("submit", async function(event) {
+
+const form = document.getElementById("createForm");
+let isSubmitting = false;
+
+form.addEventListener("submit", async function (event) {
     event.preventDefault();
+
+    if (isSubmitting) {
+        return;
+    }
+    isSubmitting = true;
+
+    const btn = form.querySelector("button[type=submit]");
+    const label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "Sending...";
 
     const householdName = document.getElementById("createHouseholdName").value;
     const username = document.getElementById("createUsername").value;
@@ -70,13 +74,21 @@ document.getElementById("createForm").addEventListener("submit", async function(
             " | User: " + data.User.name,
             "success"
         );
+
+        btn.textContent = "Create Household";
+        btn.disabled = false;
+        isSubmitting = false;
+
         showDashboardLink();
     } catch (error) {
         showMessage("Could not connect to the server.", "error");
+        btn.textContent = label;
+        btn.disabled = false;
+        isSubmitting = false;
     }
 });
 
-document.getElementById("joinForm").addEventListener("submit", async function(event) {
+document.getElementById("joinForm").addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const householdCode = document.getElementById("joinHouseholdCode").value;
@@ -113,11 +125,3 @@ document.getElementById("joinForm").addEventListener("submit", async function(ev
         showMessage("Could not connect to the server.", "error");
     }
 });
-*/
-
-module.exports = {
-    message,
-    dashboardLink,
-    showMessage,
-    showDashboardLink
-};

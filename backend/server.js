@@ -1,5 +1,7 @@
 //Used AI to provide a suggestion on if I should console log all of my errors
-require("dotenv").config();
+require("dotenv").config({
+    path: require("path").resolve(__dirname, ".env")
+});
 const { createClient } = require("@supabase/supabase-js");
 const express = require("express");
 const app = express();
@@ -34,7 +36,7 @@ app.use(express.static(path.join(__dirname, "../frontend")));
 app.post("/api/household", async (req, res) => {
     const { householdName, username } = req.body || {};
 
-        if (typeof householdName !== "string" || householdName.trim().length ===0) {
+    if (typeof householdName !== "string" || householdName.trim().length === 0) {
         return res.status(400).json({
             error: "Household name must be a non-empty string."
         });
@@ -45,6 +47,16 @@ app.post("/api/household", async (req, res) => {
             });
         }
         //genertate household code
+    if (householdName.trim().length < 2) {
+        return res.status(400).json({
+            error: "Household name must be at least 2 characters long."
+        });
+    }
+    if (typeof username !== "string" || username.trim().length === 0) {
+        return res.status(400).json({
+            error: "Username must be a non-empty string."
+        });
+    }
     const householdCode = Math.random()
         .toString(36)
         .substring(2, 9)
@@ -62,11 +74,11 @@ app.post("/api/household", async (req, res) => {
 
     if (householdError) {
         console.log(householdError);
-        return res.status(500).json({ error: "This server failed the connection between node express and Supabase"});
+        return res.status(500).json({ error: "This server failed the connection between node express and Supabase" });
     }
     //insert user
     //Used ai to understand and implement the destructuring of the objects 
-    const {  data: userData, error: userError } = await supabase
+    const { data: userData, error: userError } = await supabase
         .from("User")
         .insert([
             {
@@ -77,10 +89,12 @@ app.post("/api/household", async (req, res) => {
 
     if (userError) {
         console.log(userError);
-        return res.status(500).json({ error: "This server failed the connection between node express and Supabase"});
+        return res.status(500).json({ error: "This server failed the connection between node express and Supabase" });
     }
     //insert member
     const {  data: memberData, error: memberError } = await supabase
+
+    const { data: memberData, error: memberError } = await supabase
         .from("members")
         .insert([
             {
@@ -92,42 +106,45 @@ app.post("/api/household", async (req, res) => {
 
     if (memberError) {
         console.log(memberError);
-        return res.status(500).json({ error: "This server failed the connection between node express and Supabase"});
-    }  
-    res.status(201).json({Household: householdData[0], User: userData[0], members: memberData[0]});
+        return res.status(500).json({ error: "This server failed the connection between node express and Supabase" });
+    }
+    res.status(201).json({ Household: householdData[0], User: userData[0], members: memberData[0] });
     console.log(householdData[0], userData[0], memberData[0]);
 
-    
+
 });
 //join existing household
 app.post("/api/household/join", async (req, res) => {
-    const { householdCode,  username } = req.body || {};
+    const { householdCode, username } = req.body || {};
 
-        if (typeof householdCode !== "string" || householdCode.trim().length ===0) {
-             return res.status(400).json({error: "Household code must be a non-empty string."});
-            }
-        if (typeof username !== "string" || username.trim().length ===0) {
-            return res.status(400).json({
-                error: "Username must be a non-empty string."
-            });
-        }
+    if (typeof householdCode !== "string" || householdCode.trim().length === 0) {
+        return res.status(400).json({ error: "Household code must be a non-empty string." });
+    }
+    if (typeof username !== "string" || username.trim().length === 0) {
+        return res.status(400).json({
+            error: "Username must be a non-empty string."
+        });
+    }
 
         //look up household code
     const { data: householdCodeData, error: householdCodeError } = await supabase
         .from("Household")
         .select()
         .eq('householdCode', householdCode.trim())
-        
-        if (householdCodeError) {
-            console.log(householdCodeError);
-            return res.status(500).json({ error: "This server failed the connection between node express and Supabase"});
-        }
-        if(householdCodeData.length == 0){
-            return res.status(404).json({ error: "Household code doesn't exist"});
 
         }
         //insert user
     const {  data: userData, error: userError } = await supabase
+    if (householdCodeError) {
+        console.log(householdCodeError);
+        return res.status(500).json({ error: "This server failed the connection between node express and Supabase" });
+    }
+    if (householdCodeData.length == 0) {
+        return res.status(404).json({ error: "Household code doesn't exist" });
+
+    }
+
+    const { data: userData, error: userError } = await supabase
         .from("User")
         .insert([
             {
@@ -138,12 +155,15 @@ app.post("/api/household/join", async (req, res) => {
 
     if (userError) {
         console.log(userError);
-        return res.status(500).json({ error: "This server failed the connection between node express and Supabase"});
+        return res.status(500).json({ error: "This server failed the connection between node express and Supabase" });
     }
 
         
         //insert member
     const {  data: memberData, error: memberError } = await supabase
+
+
+    const { data: memberData, error: memberError } = await supabase
         .from("members")
         .insert([
             {
@@ -155,12 +175,12 @@ app.post("/api/household/join", async (req, res) => {
 
     if (memberError) {
         console.log(memberError);
-        return res.status(500).json({ error: "This server failed the connection between node express and Supabase"});
+        return res.status(500).json({ error: "This server failed the connection between node express and Supabase" });
     }
-    res.status(201).json({Household: householdCodeData[0], User: userData[0], members: memberData[0]});
+    res.status(201).json({ Household: householdCodeData[0], User: userData[0], members: memberData[0] });
     console.log(householdCodeData[0], userData[0], memberData[0]);
 
-    
+
 });
 
 app.get("/api/household/:householdID/:userID", async (req, res) => {
