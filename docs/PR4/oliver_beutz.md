@@ -1,6 +1,6 @@
 # Oliver Beutz
 
-**Bugs Fixed:**\
+**Bugs Fixed:**
 1. Test runs should clean themselves
 - Issue Link: https://github.com/Garcia-X/CS250-Group/issues/74
 - PR Link: https://github.com/Garcia-X/CS250-Group/pull/128
