@@ -50,7 +50,7 @@ app.post("/api/household", async (req, res) => {
             error: "This household name already exists. Please enter a different household name."
         });
     }
-     /*///////////////////////////////////////////////////////////////////*/ 
+   
         const householdCode = Math.random()
         .toString(36)
         .substring(2, 9)
@@ -92,7 +92,7 @@ app.post("/api/household", async (req, res) => {
         });
     }
 
-    /* //////////////////////////////////////////////////////////////////////*/ 
+   
     const { data: userData, error: userError } = await supabase
         .from("User")
         .insert([
