@@ -159,8 +159,6 @@ app.post("/api/household/join", async (req, res) => {
 
         
         //insert member
-    const {  data: memberData, error: memberError } = await supabase
-
 
     const { data: memberData, error: memberError } = await supabase
         .from("members")
