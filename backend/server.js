@@ -13,8 +13,10 @@ const supabase = createClient(
 );
 
 const PORT = 3000;
-//Serve static frontend files
-app.use(express.static(path.join(__dirname)));
+
+
+const frontendPath = path.join(__dirname, "../frontend");
+app.use(express.static(frontendPath));
 
 app.post("/api/household", async (req, res) => {
     const { householdName, username } = req.body || {};
