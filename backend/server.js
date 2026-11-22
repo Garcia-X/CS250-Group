@@ -92,7 +92,6 @@ app.post("/api/household", async (req, res) => {
         return res.status(500).json({ error: "This server failed the connection between node express and Supabase" });
     }
     //insert member
-    const {  data: memberData, error: memberError } = await supabase
 
     const { data: memberData, error: memberError } = await supabase
         .from("members")
