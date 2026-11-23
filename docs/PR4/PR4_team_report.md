@@ -41,9 +41,7 @@ This table documents the failing tests identified during PR4 testing and their c
 | Users should be able delete households they are part of| Missing Feature | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/121) | Major | Low | Oliver B | open |
 | Users should be able view households they are part of| Missing Feature | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/120) | Major | Low | Oliver B | open |
 
-**Additional Notes:**
 
-[Explain any test bugs that were corrected and missing features identified during testing.]
 
 ---
 
