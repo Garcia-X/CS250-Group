@@ -125,30 +125,7 @@ A few things to know:
 
 `.github/workflows/household-creation-api-test.yml` runs `npm test` on pull requests and manual runs, not on every push. It needs repository secrets named `SUPABASE_URL` and `SUPABASE_SECRET_KEY`. Whether a failure blocks merging depends on the repo's branch rules.
 
-
-## 3. Start the Application
-
-1. Make sure your terminal is still in the `backend` folder.
-2. Start the server:
-
-   ```bash
-   node server.js
-   ```
-
-3. Wait for the server to start. Keep this terminal window open while testing.
-4. Open a browser and visit:
-
-   ```text
-   http://localhost:3000
-   ```
-
-5. Open the household creation page/form.
-
-For manual browser tests, use the form fields for the household name and username. Enter the exact test data listed below, then submit the form.
-
-> **Important:** Some tests create records in the shared Supabase database. Use test data only, and do not delete records that belong to another tester. If a test requires a unique household or username, use the exact value listed for that test unless it has already been used. If it has already been used, record that the test data was previously used and coordinate with the team before changing it.
-
-## 4. Manual Household-Creation Tests
+## How to run the tests:
 
 For each test below:
 
