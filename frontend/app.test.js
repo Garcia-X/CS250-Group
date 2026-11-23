@@ -9,7 +9,9 @@ let showDashboardLink;
 beforeEach(() => {
     document.body.innerHTML = `
         <div id="message" class="message"></div>
-        <a id="dashboardLink" style="display: none;"></a>`;
+        <a id="dashboardLink" style="display: none;"></a>
+        <p id="createForm">p</p>
+        <p id="joinForm">q</p>`;
     jest.resetModules();
     ({ showMessage, showDashboardLink } = require("./app.js"));
 });
