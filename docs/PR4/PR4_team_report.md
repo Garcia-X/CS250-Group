@@ -51,12 +51,11 @@ This section documents the full test suite results after each merge to main.
 
 | Date | Fix / PR | Test That Broke | Resolution |
 |---|---|---|---|
-| [Date] | [PR Link] | None | No regression found |
-| [Date] | [PR Link] | [Test name] | [How it was resolved] |
+| 11/22/2026 | N/A | N/A | No regression found |
 
 **Regression Summary:**
 
-[If no regressions occurred, write "No regressions found" and list the dates when the full test suite was executed.]
+We ran the regression test for the first time on Sunday 11/22/2026 and all of the tests we wrote passed.
 
 ---
 
