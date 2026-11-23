@@ -71,8 +71,8 @@ We ran the regression test for the first time on Sunday 11/22/2026 and all of th
 
 ### Test Results
 
-- **Total Tests:** 2
-- **Tests Passed:** 2
+- **Total Tests:** 4
+- **Tests Passed:** 4
 - **Tests Failed:** 0
 - **Tests Skipped:** N/A
 
