@@ -108,7 +108,7 @@ Names are trimmed before they're saved. The join endpoint only looks up a record
 
 To try the lookup, POST the JSON above to `http://localhost:3000/api/join-household` with `Content-Type: application/json`.
 
-## Testing
+## Automated Testing
 
 From `backend/`:
 
@@ -526,9 +526,6 @@ The following tests were added for login behavior. The current project prototype
 5. Confirm that the response time is five seconds or less.
 
 
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ## Troubleshooting
 
 | Problem | What to check |
