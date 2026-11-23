@@ -95,7 +95,7 @@ This section documents the full test suite results after each merge to main.
 
 **Feature Name:** Chore dashboard
 
-**GitHub Issue:** [[Feature Issue]((https://github.com/Garcia-X/CS250-Group/issues/136) )]
+**GitHub Issue:** [#Feature Issue](https://github.com/Garcia-X/CS250-Group/issues/136 )
 
 ### User Story
 
