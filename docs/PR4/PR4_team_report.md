@@ -31,10 +31,15 @@ This table documents the failing tests identified during PR4 testing and their c
 | No membership or access checks | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/77) | Major | High | Katie Le | Done  |
 | No front-end network-error handling | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/79) | Medium | Medium | Katie Le |Done |
 | No log in feature | Missing Feature | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/77) | Major | High | Katie Le | Open |
+| Reject login with incorrect password | Missing Feature | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/98) | Major | High | Katie Le | Open |
+| Verify login response time should be 5 seconds or less | Missing Feature | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/100) | Minor | low | Katie Le | Open |
+| Reject login when username or password is empty | Missing Feature | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/99) | Major | High | Katie Le | Open |
 | Create household using an existing household name | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/103) | Major | Mayor | Raquel R |Done|
 | Create household using an existing username | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/104) | Major | Major | Raquel R | Done  |
 | Test runs should clean themselves | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/74) | Minor | Low | Oliver B | Done |
 | Test 251 character | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/106) | Minor | Low | Oliver B | Done  |
+| Users should be able delete households they are part of| Missing Feature | [#Issue(https://github.com/Garcia-X/CS250-Group/issues/120) | Major | Minor | Oliver B | open |
+| Users should be able view households they are part of| Missing Feature | [#Issue(https://github.com/Garcia-X/CS250-Group/issues/120) | Major | Minor | Oliver B | open |
 
 **Additional Notes:**
 
