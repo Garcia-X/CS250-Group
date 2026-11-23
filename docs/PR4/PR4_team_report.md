@@ -63,7 +63,7 @@ We ran the regression test for the first time on Sunday 11/22/2026 and all of th
 
 **Date:** November 22, 2026  
 **Branch:** main  
-**Commit Hash:** [Commit hash]
+**Commit Hash:** 0d4628a
 
 ### Final Test Screenshot
 
@@ -71,18 +71,14 @@ We ran the regression test for the first time on Sunday 11/22/2026 and all of th
 
 ### Test Results
 
-- **Total Tests:** [Number]
-- **Tests Passed:** [Number]
-- **Tests Failed:** [Number]
-- **Tests Skipped:** [Number, if applicable]
+- **Total Tests:** 2
+- **Tests Passed:** 2
+- **Tests Failed:** 0
+- **Tests Skipped:** N/A
 
-### Remaining Failing Tests
+### Remaining Failing Tests  
 
-| Test Name | Reason It Is Still Failing |
-|---|---|
-| [Test name] | [One-sentence explanation] |
-
-[If all tests pass, write: "All tests passed. No remaining failing tests."]
+All tests passed. No remaining failing tests.
 
 ---
 
