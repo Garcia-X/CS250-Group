@@ -84,6 +84,31 @@ document.getElementById("createForm").addEventListener("submit", async function(
     }
 });
 
+document.getElementById("delete").addEventListener("click", async function (event) {
+    event.preventDefault();
+
+    try {
+        const response = await fetch("/api/household/households", {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                householdCode: householdCode,
+                username: username
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            showMessage(data.error || "Could not delete household.", "error");
+            return;
+        }
+        showMessage("Household deleted successfully.", "success");
+    } catch (error) {
+        showMessage("Could not connect to the server.", "error");
+    }
+});
+
 document.getElementById("joinForm").addEventListener("submit", async function(event) {
     event.preventDefault();
     const submitButton = this.querySelector("button[type='submit']");
