@@ -38,7 +38,7 @@ This table documents the failing tests identified during PR4 testing and their c
 | Create household using an existing username | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/104) | Major | Major | Raquel R | Done  |
 | Test runs should clean themselves | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/74) | Minor | Low | Oliver B | Done |
 | Test 251 character | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/106) | Minor | Low | Oliver B | Done  |
-| Users should be able delete households they are part of| Missing Feature | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/120) | Major | Low | Oliver B | open |
+| Users should be able delete households they are part of| Missing Feature | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/121) | Major | Low | Oliver B | open |
 | Users should be able view households they are part of| Missing Feature | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/120) | Major | Low | Oliver B | open |
 
 **Additional Notes:**
