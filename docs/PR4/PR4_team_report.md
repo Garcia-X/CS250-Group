@@ -26,15 +26,15 @@ This table documents the failing tests identified during PR4 testing and their c
 
 | Test Name | Bucket | Issue Link | Severity | Priority | Owner | Status |
 |---|---|---|---|---|---|---|
-| [Create household with one-character values] | Code Bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/102L) | Minor | Low | [Akshaya P] | Done |
-| [Implement error handling on the frontend] | Code Bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/73) | Minor| Low | [Akshaya P] | Done |
-| [No membership or access checks] | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/77) | Major | High | [Katie Le] | Done  |
-| [No front-end network-error handling] | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/79) | Medium | Medium | [Katie Le] |Done |
-| [No log in feature] | Missing Feature | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/77) | Major | High | [Katie Le] | Open |
-| [Create household using an existing household name] | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/103) | Major | Mayor | [Raquel R]|Done|
-| [Create household using an existing username] | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/104) | Major | Major | [Raquel R] | Done  |
-| [Test runs should clean themselves] | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/74) | Minor | Low | [Oliver B] | Done |
-| [Test 251 characters] | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/106) | Minor | Low | [Oliver B] | Done  |
+| Create household with one-character values | Code Bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/102L) | Minor | Low | Akshaya P | Done |
+| Implement error handling on the frontend | Code Bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/73) | Minor| Low | Akshaya P | Done |
+| No membership or access checks | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/77) | Major | High | Katie Le | Done  |
+| No front-end network-error handling | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/79) | Medium | Medium | Katie Le |Done |
+| No log in feature | Missing Feature | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/77) | Major | High | Katie Le | Open |
+| Create household using an existing household name | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/103) | Major | Mayor | Raquel R |Done|
+| Create household using an existing username | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/104) | Major | Major | Raquel R | Done  |
+| Test runs should clean themselves | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/74) | Minor | Low | Oliver B | Done |
+| Test 251 character | Code bug | [#Issue](https://github.com/Garcia-X/CS250-Group/issues/106) | Minor | Low | Oliver B | Done  |
 
 **Additional Notes:**
 
