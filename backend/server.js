@@ -43,11 +43,12 @@ app.post("/api/household", async (req, res) => {
     }
     if (householdName.trim().length > 250) {
         return res.status(400).json({ error: "Household name must be at most 250 characters." });
-        if (typeof username !== "string" || username.trim().length ===0) {
-            return res.status(400).json({
-                error: "Username must be a non-empty string."
-            });
-        }
+    }
+    if (typeof username !== "string" || username.trim().length ===0) {
+        return res.status(400).json({
+            error: "Username must be a non-empty string."
+        });
+    }
         //genertate household code
     if (householdName.trim().length < 2) {
         return res.status(400).json({
@@ -150,14 +151,14 @@ app.post("/api/household/join", async (req, res) => {
     }
 
     // Insert user
-       const { data: userData, error: userError } = await supabase
-        .from("User")
-        .insert([
-            {
-                name: username.trim()
-            }
-        ])
-        .select();
+    const { data: userData, error: userError } = await supabase
+    .from("User")
+    .insert([
+        {
+            name: username.trim()
+        }
+    ])
+    .select();
 
     if (userError) {
         console.log(userError);
@@ -167,15 +168,15 @@ app.post("/api/household/join", async (req, res) => {
     }
 
     // Insert member
-       const { data: memberData, error: memberError } = await supabase
-        .from("members")
-        .insert([
-            {
-                user_id: userData[0].user_id,
-                householdID: householdCodeData[0].householdID
-            }
-        ])
-        .select();
+    const { data: memberData, error: memberError } = await supabase
+    .from("members")
+    .insert([
+        {
+            user_id: userData[0].user_id,
+            householdID: householdCodeData[0].householdID
+        }
+    ])
+    .select();
 
     if (memberError) {
         console.log(memberError);

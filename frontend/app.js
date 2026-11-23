@@ -3,13 +3,13 @@ const tabContents = document.querySelectorAll(".tab-content");
 const message = document.getElementById("message");
 const dashboardLink = document.getElementById("dashboardLink");
 
-tabButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-        tabButtons.forEach(function (tabButton) {
+tabButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        tabButtons.forEach(function(tabButton) {
             tabButton.classList.remove("active");
         });
 
-        tabContents.forEach(function (tabContent) {
+        tabContents.forEach(function(tabContent) {
             tabContent.classList.remove("active");
         });
 
@@ -29,24 +29,19 @@ function showDashboardLink() {
     dashboardLink.style.display = "inline-block";
 }
 
-const form = document.getElementById("createForm");
-let isSubmitting = false;
-
-form.addEventListener("submit", async function (event) {
+document.getElementById("createForm").addEventListener("submit", async function(event) {
     event.preventDefault();
 
-    if (isSubmitting) {
+    const submitButton = this.querySelector("button[type='submit']");
+
+    if (submitButton.disabled) {
         return;
     }
-    isSubmitting = true;
-
-    const btn = form.querySelector("button[type=submit]");
-    const label = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = "Sending...";
-
     const householdName = document.getElementById("createHouseholdName").value;
     const username = document.getElementById("createUsername").value;
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Creating...";
 
     showMessage("Creating household...", "");
 
@@ -60,7 +55,12 @@ form.addEventListener("submit", async function (event) {
             })
         });
 
-        const data = await response.json();
+        let data;
+        try {
+            data = await response.json();
+        } catch (error) {
+            throw new Error("Invalid JSON response from server.");
+        }
 
         if (!response.ok) {
             showMessage(data.error || "Could not create household.", "error");
@@ -74,25 +74,53 @@ form.addEventListener("submit", async function (event) {
             " | User: " + data.User.name,
             "success"
         );
-
-        btn.textContent = "Create Household";
-        btn.disabled = false;
-        isSubmitting = false;
-
         showDashboardLink();
     } catch (error) {
-        showMessage("Could not connect to the server.", "error");
-        btn.textContent = label;
-        btn.disabled = false;
-        isSubmitting = false;
+        showMessage(error.message || "Could not connect to the server.", "error");
+    }
+    finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Create Household";
     }
 });
 
-document.getElementById("joinForm").addEventListener("submit", async function (event) {
+document.getElementById("delete").addEventListener("click", async function (event) {
     event.preventDefault();
 
+    try {
+        const response = await fetch("/api/household/households", {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                householdCode: householdCode,
+                username: username
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            showMessage(data.error || "Could not delete household.", "error");
+            return;
+        }
+        showMessage("Household deleted successfully.", "success");
+    } catch (error) {
+        showMessage("Could not connect to the server.", "error");
+    }
+});
+
+document.getElementById("joinForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    const submitButton = this.querySelector("button[type='submit']");
+
+    if (submitButton.disabled) {
+        return;
+    }
     const householdCode = document.getElementById("joinHouseholdCode").value;
     const username = document.getElementById("joinUsername").value;
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Joining...";
 
     showMessage("Joining household...", "");
 
@@ -105,8 +133,13 @@ document.getElementById("joinForm").addEventListener("submit", async function (e
                 username: username
             })
         });
+        let data;
 
-        const data = await response.json();
+        try {
+            data = await response.json();
+        } catch (error) {
+            throw new Error("Invalid JSON response from server.");
+        }
 
         if (!response.ok) {
             showMessage(data.error || "Could not join household.", "error");
@@ -122,6 +155,11 @@ document.getElementById("joinForm").addEventListener("submit", async function (e
         );
         showDashboardLink();
     } catch (error) {
-        showMessage("Could not connect to the server.", "error");
+        showMessage(error.message || "Could not connect to the server.", "error");
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Join Household";
     }
 });
+
+module.exports = { showMessage, showDashboardLink }
