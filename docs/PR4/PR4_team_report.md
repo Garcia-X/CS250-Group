@@ -82,40 +82,38 @@ This section documents the full test suite results after each merge to main.
 
 ### Selected Feature
 
-**Feature Name:** [Feature name]
+**Feature Name:** Chore dashboard
 
-**GitHub Issue:** [Feature Issue](Issue URL)
+**GitHub Issue:** [[Feature Issue](Issue URL)](https://github.com/Garcia-X/CS250-Group/issues/136) 
 
 ### User Story
 
-As a [type of user], I want [feature or functionality], so that [benefit or purpose].
+As a roommate, I want a working chore dashboard, so that each person knows their responsibility to maintain a clean shared space.
 
 ### Why We Chose This Feature
-
-[Explain why the team selected this feature and how it improves the Roommate Chore Manager.]
-
+Our team selected this feature (working dashboard) because this is the whole purpose of Roommate Chore Manager. The current chore manager does not have any working feature for chore management. By creating a working dashboard, users are able to add, delete, and mark chores as completed so roommates can divide and contribute to tasks.
 ### Team Responsibilities
 
 | Team Member | Assigned Responsibilities |
 |---|---|
-| [Name] | [Feature responsibility] |
-| [Name] | [Feature responsibility] |
-| [Name] | [Feature responsibility] |
-| [Name] | [Feature responsibility] |
+| Akshaya | Create chores |
+| Oliver | Make dashboard |
+| Katie | Delete chores|
+| Raquel | Mark chores as completed |
 
 ### Feature Test Cases
 
-**Test Case 1: [Test Name]**
+**Test Case 1: View chore dashboard**
 
-- **Given:** [Initial conditions]
-- **When:** [Action performed]
-- **Then:** [Expected result]
+- **Given:** A roommate joined the household and there are existing chores
+- **When:** The user opens up the dashboard
+- **Then:** The chores should be on display with options to add, delete, and mark chores as completed
 
-**Test Case 2: [Test Name]**
+**Test Case 2: Create a chore**
 
-- **Given:** [Initial conditions]
-- **When:** [Action performed]
-- **Then:** [Expected result]
+- **Given:** A roommate is on the chore dashboard
+- **When:** The roommate enters chore information and submits it
+- **Then:** The new chore should be displayed on the dashboard 
 
 ---
 
