@@ -108,7 +108,7 @@ Names are trimmed before they're saved. The join endpoint only looks up a record
 
 To try the lookup, POST the JSON above to `http://localhost:3000/api/join-household` with `Content-Type: application/json`.
 
-## Testing
+## Automated Testing
 
 From `backend/`:
 
@@ -124,6 +124,407 @@ A few things to know:
 - It's the only test. Invalid input, failed lookups, and permissions aren't covered.
 
 `.github/workflows/household-creation-api-test.yml` runs `npm test` on pull requests and manual runs, not on every push. It needs repository secrets named `SUPABASE_URL` and `SUPABASE_SECRET_KEY`. Whether a failure blocks merging depends on the repo's branch rules.
+
+## How to run the tests:
+
+For each test below:
+
+1. Make sure the application is running.
+2. Open `http://localhost:3000`.
+3. Open the household creation form.
+4. Enter the household name and username shown in the test.
+5. Submit the form.
+6. Compare what happens with the expected result.
+
+### TC-AP-01 — No Household Name Provided
+
+- **Source:** System Map Part 6, TC-1
+- **Test type:** Acceptance
+- **Household name:** Leave empty
+- **Username:** `SkibidiSigma6767`
+- **Expected result:** The form should not submit an empty household name.
+- **Observed result:** The browser displays the required-field message, “Please fill out this empty field.”
+- **Recorded status:** Pass
+
+**How to reproduce:**
+
+1. Open the household creation form.
+2. Leave the household name field empty.
+3. Enter `SkibidiSigma6767` as the username.
+4. Submit the form.
+5. Confirm that the browser blocks submission and displays its required-field message.
+
+### TC-AP-02 — Happy Path With Valid Inputs
+
+- **Source:** System Map Part 6, TC-2
+- **Test type:** System / end-to-end
+- **Household name:** `ourhouse`
+- **Username:** `dorm2306`
+- **Expected result:** The household is created successfully and the application provides the household information, including its ID/code and user information as expected by the test.
+- **Observed result:** The household was created successfully.
+- **Recorded status:** Pass
+
+**How to reproduce:**
+
+1. Open the household creation form.
+2. Enter `ourhouse` as the household name.
+3. Enter `dorm2306` as the username.
+4. Submit the form.
+5. Confirm that the application reports a successful creation and displays the resulting household information.
+
+### TC-AP-03 — Household Name Over the Character Limit
+
+- **Source:** System Map Part 6, TC-3
+- **Test type:** Boundary
+- **Household name:** Use the 251-character household name from the test case.
+- **Username:** `person1`
+- **Expected result:** The application should reject a household name that exceeds the test case's character limit and display an appropriate message.
+- **Observed result:** The household was created.
+- **Recorded status:** Fail
+- **GitHub Issue:** #108
+
+**How to reproduce:**
+
+1. Open the household creation form.
+2. Enter the exact 251-character household name used in the test case.
+3. Enter `person1` as the username.
+4. Submit the form.
+5. Record whether the application rejects the name or creates the household.
+6. The recorded result for this test was that the household was created, so the test failed.
+
+### TC-AP-04 — Verify Household Data Is Saved
+
+- **Source:** New test
+- **Test type:** Integration
+- **Household name:** `testHouse`
+- **Username:** `person1`
+- **Expected result:** The household information is saved correctly in the database, or the automated database test completes successfully.
+- **Observed result:** The database entry was reported as accurate and the test suite passed.
+- **Recorded status:** Pass
+
+**How to reproduce manually:**
+
+1. Open the household creation form.
+2. Enter `testHouse` as the household name.
+3. Enter `person1` as the username.
+4. Submit the form.
+5. Check the Supabase `Household` table using the team's approved database access.
+6. Confirm that a corresponding household record exists and that its saved values match the submitted information.
+
+**Automated test note:** The test notes also refer to running `server.test.js`. Confirm the actual test file location and the test script in `backend/package.json` before using a file-specific command. Do not assume that a test file exists at a particular path.
+
+### TC-RR-01 — Create a Household With Valid Information
+
+- **Source:** New test
+- **Test type:** Acceptance
+- **Household name:** `Acceptance`
+- **Username:** `Trying`
+- **Expected result:** The household is created successfully.
+- **Observed result:** The household was created successfully.
+- **Recorded status:** Pass
+
+**How to reproduce:**
+
+1. Open the household creation form.
+2. Enter `Acceptance` as the household name.
+3. Enter `Trying` as the username.
+4. Submit the form.
+5. Confirm that the household is created.
+
+### TC-RR-02 — Household Name Contains Only Spaces
+
+- **Source:** New test
+- **Test type:** Input validation
+- **Household name:** Ten spaces
+- **Username:** `Tryingwithspaces`
+- **Expected result:** The application rejects a household name that contains only spaces.
+- **Observed result:** The application displayed “Household name must be a non-empty string.”
+- **Recorded status:** Pass
+
+**How to reproduce:**
+
+1. Open the household creation form.
+2. Enter ten space characters in the household name field.
+3. Enter `Tryingwithspaces` as the username.
+4. Submit the form.
+5. Confirm that the application rejects the household name and displays the validation message.
+
+### TC-RR-03 — Empty Household Name
+
+- **Source:** New test
+- **Test type:** Input validation
+- **Household name:** Leave empty
+- **Username:** `Tryingwithempty`
+- **Expected result:** The application prevents submission without a household name.
+- **Observed result:** The browser displayed “Please fill out this field.”
+- **Recorded status:** Pass
+
+**How to reproduce:**
+
+1. Open the household creation form.
+2. Leave the household name field empty.
+3. Enter `Tryingwithempty` as the username.
+4. Submit the form.
+5. Confirm that the browser prevents submission.
+
+### TC-RR-04 — Username Contains Only Spaces
+
+- **Source:** New test
+- **Test type:** Input validation
+- **Household name:** `Tryingwithspaces`
+- **Username:** Ten spaces
+- **Expected result:** The application rejects a username that contains only spaces.
+- **Observed result:** The application displayed “Username must be a non-empty string.”
+- **Recorded status:** Pass
+
+**How to reproduce:**
+
+1. Open the household creation form.
+2. Enter `Tryingwithspaces` as the household name.
+3. Enter ten space characters in the username field.
+4. Submit the form.
+5. Confirm that the application rejects the username and displays the validation message.
+
+### TC-RR-05 — Empty Username
+
+- **Source:** New test
+- **Test type:** Input validation
+- **Household name:** `Tryingwithempty`
+- **Username:** Leave empty
+- **Expected result:** The application prevents submission without a username.
+- **Observed result:** The browser displayed “Please fill out this field.”
+- **Recorded status:** Pass
+
+**How to reproduce:**
+
+1. Open the household creation form.
+2. Enter `Tryingwithempty` as the household name.
+3. Leave the username field empty.
+4. Submit the form.
+5. Confirm that the browser prevents submission.
+
+### TC-RR-06 — One-Character Household Name
+
+- **Source:** New test
+- **Test type:** Boundary
+- **Household name:** `R`
+- **Username:** `onecharacter`
+- **Expected result:** The test case expects the application to reject the one-character household name.
+- **Observed result:** The household was created successfully.
+- **Recorded status:** Fail
+- **GitHub Issue:** #102
+
+**How to reproduce:**
+
+1. Open the household creation form.
+2. Enter `R` as the household name.
+3. Enter `onecharacter` as the username.
+4. Submit the form.
+5. Record whether the application accepts or rejects the household name.
+6. The recorded result was that the household was created, which did not match the test case's expected result.
+
+### TC-RR-07 — Duplicate Household Name
+
+- **Source:** New test
+- **Test type:** Input validation / duplicate-data test
+- **Household name:** `EnaJuna`
+- **Username:** `twice`
+- **Expected result:** The test case expects the second submission using the duplicate household name to be rejected.
+- **Observed result:** A second household was created.
+- **Recorded status:** Fail
+- **GitHub Issue:** #103
+
+**How to reproduce:**
+
+1. Open the household creation form.
+2. Submit a household using the name `EnaJuna` and username `twice`.
+3. Return to the household creation form.
+4. Submit the same household name again, using the duplicate test data specified by the test case.
+5. Check whether the second submission is rejected or creates another household.
+6. The recorded result was that the second household was created.
+
+### TC-RR-08 — Duplicate Username
+
+- **Source:** New test
+- **Test type:** Input validation / duplicate-data test
+- **Household name:** `twice`
+- **Username:** `JunaEna`
+- **Expected result:** The test case expects the second submission using the duplicate username to be rejected.
+- **Observed result:** A second household was created.
+- **Recorded status:** Fail
+- **GitHub Issue:** #104
+
+**How to reproduce:**
+
+1. Open the household creation form.
+2. Submit a household using the household name `twice` and username `JunaEna`.
+3. Return to the household creation form.
+4. Submit the same username again using the duplicate test data specified by the test case.
+5. Check whether the second submission is rejected or creates another household.
+6. The recorded result was that the second household was created.
+
+### OB-01 — Empty Household Name
+
+- **Source:** System Map Part 6, TC-1
+- **Test type:** Input validation
+- **Household name:** Leave empty
+- **Username:** `SkibidiSigma6767`
+- **Expected result:** The form blocks submission when the household name is empty.
+- **Observed result:** The browser displayed its required-field popup and blocked submission.
+- **Recorded status:** Pass
+
+**How to reproduce:**
+
+1. Open the household creation form.
+2. Leave the household name field empty.
+3. Enter `SkibidiSigma6767` as the username.
+4. Submit the form.
+5. Confirm that the browser blocks submission.
+
+### OB-02 — Household Name With 249 Characters
+
+- **Source:** New test
+- **Test type:** Boundary
+- **Household name:** The exact 249-character value from the test case
+- **Username:** `sigma67`
+- **Expected result:** The application accepts the household name.
+- **Observed result:** The household was created.
+- **Recorded status:** Pass
+
+**How to reproduce:**
+
+1. Open the household creation form.
+2. Enter the exact 249-character household name used in the test case.
+3. Enter `sigma67` as the username.
+4. Submit the form.
+5. Confirm that the household is created.
+
+### OB-03 — Household Name With 250 Characters
+
+- **Source:** New test
+- **Test type:** Boundary
+- **Household name:** The exact 250-character value from the test case
+- **Username:** `skibidi`
+- **Expected result:** The application accepts the household name.
+- **Observed result:** The household was created.
+- **Recorded status:** Pass
+
+**How to reproduce:**
+
+1. Open the household creation form.
+2. Enter the exact 250-character household name used in the test case.
+3. Enter `skibidi` as the username.
+4. Submit the form.
+5. Confirm that the household is created.
+
+### OB-04 — Household Name With 251 Characters
+
+- **Source:** New test
+- **Test type:** Boundary
+- **Household name:** The exact 251-character value from the test case
+- **Username:** `amongUs`
+- **Expected result:** The test case expects the application to reject the household name.
+- **Observed result:** The household was created.
+- **Recorded status:** Fail
+- **Severity:** Minor
+- **Priority:** Verification
+- **GitHub Issue:** #106
+
+**How to reproduce:**
+
+1. Open the household creation form.
+2. Enter the exact 251-character household name used in the test case.
+3. Enter `amongUs` as the username.
+4. Submit the form.
+5. Record whether the application rejects or accepts the name.
+6. The recorded result was that the household was created.
+
+### OB-05 — New User Can Create a Household
+
+- **Source:** New test
+- **Test type:** Usability
+- **Household name:** `Vault 111`
+- **Username:** `The Lone Survivor`
+- **Expected result:** A user unfamiliar with the application can create a household within one minute.
+- **Observed result:** The user completed the task in 55 seconds.
+- **Recorded status:** Pass
+
+**How to reproduce:**
+
+1. Ask someone who has not used the application before to try the household creation process.
+2. Start a timer when the person begins.
+3. Do not provide instructions beyond asking them to create a household.
+4. Stop the timer when the household has been created.
+5. Record whether the person completed the task within one minute.
+6. The recorded test took 55 seconds.
+
+## Login Tests — Not Currently Runnable
+
+The following tests were added for login behavior. The current project prototype does not include a login feature, so these tests cannot be completed against the current application. They are documented as missing-feature tests, not as working login tests.
+
+### TC-KL-01 — Login With Valid Credentials
+
+- **Source:** New test
+- **Expected result:** A user with a valid username and password can log in.
+- **Observed result:** Login functionality is not implemented.
+- **Recorded status:** Fail / missing feature
+- **GitHub Issue:** #97
+
+**How to reproduce when login is implemented:**
+
+1. Open the login page.
+2. Enter a valid username.
+3. Enter the matching password.
+4. Submit the login form.
+5. Confirm that the user is logged in successfully.
+
+### TC-KL-02 — Reject an Incorrect Password
+
+- **Source:** New test
+- **Expected result:** The application rejects an incorrect password.
+- **Observed result:** Login functionality is not implemented.
+- **Recorded status:** Fail / missing feature
+- **GitHub Issue:** #98
+
+**How to reproduce when login is implemented:**
+
+1. Open the login page.
+2. Enter a valid username.
+3. Enter an incorrect password.
+4. Submit the login form.
+5. Confirm that access is denied and an appropriate message is displayed.
+
+### TC-KL-03 — Reject Empty Login Fields
+
+- **Source:** New test
+- **Expected result:** The application does not allow login when the username or password is empty.
+- **Observed result:** Login functionality is not implemented.
+- **Recorded status:** Fail / missing feature
+- **GitHub Issue:** #99
+
+**How to reproduce when login is implemented:**
+
+1. Open the login page.
+2. Leave the username empty and enter a password, then submit.
+3. Repeat with a username and an empty password.
+4. Confirm that the application blocks both attempts and displays appropriate validation messages.
+
+### TC-KL-04 — Login Response Time
+
+- **Source:** New test
+- **Expected result:** A login attempt returns a response within five seconds.
+- **Observed result:** Login functionality is not implemented.
+- **Recorded status:** Fail / missing feature
+- **GitHub Issue:** #100
+
+**How to reproduce when login is implemented:**
+
+1. Open the login page.
+2. Enter valid login credentials.
+3. Start a timer when you submit the form.
+4. Stop the timer when the application responds.
+5. Confirm that the response time is five seconds or less.
+
 
 ## Troubleshooting
 
