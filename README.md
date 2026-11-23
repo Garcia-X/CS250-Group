@@ -458,7 +458,7 @@ For each test below:
 5. Record whether the person completed the task within one minute.
 6. The recorded test took 55 seconds.
 
-## 5. Login Tests — Not Currently Runnable
+## Login Tests — Not Currently Runnable
 
 The following tests were added for login behavior. The current project prototype does not include a login feature, so these tests cannot be completed against the current application. They are documented as missing-feature tests, not as working login tests.
 
