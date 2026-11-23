@@ -41,11 +41,14 @@ app.post("/api/household", async (req, res) => {
             error: "Household name must be a non-empty string."
         });
     }
-        if (typeof username !== "string" || username.trim().length ===0) {
-            return res.status(400).json({
-                error: "Username must be a non-empty string."
-            });
-        }
+    if (householdName.trim().length > 250) {
+        return res.status(400).json({ error: "Household name must be at most 250 characters." });
+    }
+    if (typeof username !== "string" || username.trim().length ===0) {
+        return res.status(400).json({
+            error: "Username must be a non-empty string."
+        });
+    }
         //genertate household code
     if (householdName.trim().length < 2) {
         return res.status(400).json({
@@ -148,14 +151,14 @@ app.post("/api/household/join", async (req, res) => {
     }
 
     // Insert user
-       const { data: userData, error: userError } = await supabase
-        .from("User")
-        .insert([
-            {
-                name: username.trim()
-            }
-        ])
-        .select();
+    const { data: userData, error: userError } = await supabase
+    .from("User")
+    .insert([
+        {
+            name: username.trim()
+        }
+    ])
+    .select();
 
     if (userError) {
         console.log(userError);
@@ -165,15 +168,15 @@ app.post("/api/household/join", async (req, res) => {
     }
 
     // Insert member
-       const { data: memberData, error: memberError } = await supabase
-        .from("members")
-        .insert([
-            {
-                user_id: userData[0].user_id,
-                householdID: householdCodeData[0].householdID
-            }
-        ])
-        .select();
+    const { data: memberData, error: memberError } = await supabase
+    .from("members")
+    .insert([
+        {
+            user_id: userData[0].user_id,
+            householdID: householdCodeData[0].householdID
+        }
+    ])
+    .select();
 
     if (memberError) {
         console.log(memberError);
@@ -218,6 +221,26 @@ app.get("/api/household/:householdID/:userID", async (req, res) => {
     return res.status(200).json(data);
 });
 
+app.delete("/api/household/households", async (req, res) => {
+    const { householdName } = req.body || {};
+    if (typeof householdName !== "string" || householdName.trim().length ===0) {
+        return res.status(400).json({error: "Household name must be a non-empty string."});
+    }
+    const { data: householdData, error: householdError } = await supabase
+        .from('Household')
+        .delete()
+        .eq('name', householdName.trim())
+        .select();
+    if (householdError) {
+        console.log(householdError);
+        return res.status(500).json({ error: "This server failed the connection between node express and Supabase"});
+    }
+    if(householdData.length == 0){
+        return res.status(404).json({ error: "Household doesn't exist"});
+    }
+    res.status(200).json({Household: householdData[0]});
+    console.log(householdData[0]);
+});
 
 
 if (require.main === module) {
