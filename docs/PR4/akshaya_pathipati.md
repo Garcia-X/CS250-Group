@@ -13,15 +13,15 @@ The bug was that the system allowed for households to be created even if the pro
 
 AI Disclosure: none
 
-## Bug 2: Issue #73
+## Bug 2: Issue #120
 
-- Issue: [GitHub Issue #73](https://github.com/Garcia-X/CS250-Group/issues/73)
-- PR: [Pull Request #132](https://github.com/Garcia-X/CS250-Group/pull/132)
-- Before: ![Before](screenshots/akshaya_pathipati_issue73_before.png)
-- After: ![After](screenshots/akshaya_pathipati_issue73_after.png)
+- Issue: [GitHub Issue #73](https://github.com/Garcia-X/CS250-Group/issues/120)
+- PR: [Pull Request #140](https://github.com/Garcia-X/CS250-Group/pull/140)
+- Before: ![Before](screenshots/akshaya_pathipati_issue120_before.png)
+- After: ![After](screenshots/akshaya_pathipati_issue120_after.png)
 
 Explanation of the bug and how it was identified.  
 
-When trying to submit the form, if the user double clicks the submit button by accident, two forms are submitted. This issue was found by the previous dev team when they were testing the system.  
+The system should allow for households to be deleted, but that fuctionality isn't available. We identified it by looking at the requirements that we outlined and seeing that that housholds couldn't be deleted. 
 
 AI Disclosure: None. 
