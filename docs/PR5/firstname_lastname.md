@@ -51,4 +51,4 @@ Copy the Risk 1 or Risk 2 format for every additional risk. Each student must id
 
 ## AI Disclosure
 
-[If AI was used, briefly explain how it helped you with this assignment and how you reviewed or modified its suggestions.]
+AI was used for formatting.
