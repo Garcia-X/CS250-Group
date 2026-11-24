@@ -129,3 +129,6 @@ Before submitting PR5, make sure the team has completed the following:
 - [ ] Board screenshot is saved as `screenshots/board.png`.
 - [ ] Build plan assigns each feature task to a specific person.
 - [ ] Team report and supporting files are committed to the team's own branch and submitted through a teammate-approved PR.
+
+
+AI Disclosure: ChatGPT Was use to create this templet.
