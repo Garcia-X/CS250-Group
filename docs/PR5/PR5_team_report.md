@@ -25,10 +25,14 @@ Out of Scope:
 
 # PR5 Team Report
 
-**Team Number:** [Your team number]  
-**Team Members:** [List all team members]  
-**Feature:** [Name of the feature selected in PR4]  
-**Feature Issue:** [Link to the GitHub Issue for this feature]
+**Team Number:** 11 
+**Team Members:** 
+-Akshaya Pathipati
+-Katie Le
+-Raquel Ramos
+-Oliver Beutz
+**Feature:** Working Chore Dashbord
+**Feature Issue:**  [Working Chore Dashbord](https://github.com/Garcia-X/CS250-Group/issues/136)
 
 ---
 
@@ -40,31 +44,32 @@ Out of Scope:
 
 ### User Story
 
-As a [type of user], I want [what the user wants to do], so that [the benefit or reason].
+As a roommate, I want a working chore dashboard, so that I can ensure that each person knows their responsibilities to the household and keep everyone accountable.
 
 ### Acceptance Criteria
 
 Write at least **3 acceptance criteria**. Each criterion must be specific and testable with a yes-or-no answer.
 
-1. [The system shall... / The user can...]
-2. [The system shall... / The user can...]
-3. [The system shall... / The user can...]
+1. Create Chore: Can a user create a chore, and does the newly created chore appear on the dashboard?
+2. Delete Chore: Can a user delete an existing chore, and does it disappear from the dashboard?
+3. Complete Chore: Can a user mark an existing chore as completed, and is its completed status displayed on the dashboard?
 
 ### In Scope
 
 List what the team plans to include in this feature.
 
-- [Function or behavior included in the feature]
-- [Function or behavior included in the feature]
-- [Function or behavior included in the feature]
+- Create new chores.
+- Delete existing chores.
+- Mark chores as completed.
+- View the dashboard and see the list and status of chores.
 
 ### Out of Scope
 
 List what the team will **not** build as part of this feature. Requests for these items will require a change request.
 
-- [Function or behavior not included]
-- [Function or behavior not included]
-- [Function or behavior not included]
+- Assigning chores to specific roommates.
+- Adding due dates to chores.
+- Providing a calendar view of chores.
 
 ---
 
