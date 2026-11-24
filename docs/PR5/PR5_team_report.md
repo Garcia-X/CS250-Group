@@ -26,8 +26,11 @@ Out of Scope:
 # PR5 Team Report
 
 **Team Number:** 11 
+
 **Team Members:** Akshaya Pathipati, Katie Le, Raquel Ramos, Oliver Beutz.
+
 **Feature:** Working Chore Dashbord
+
 **Feature Issue:**  [Working Chore Dashbord](https://github.com/Garcia-X/CS250-Group/issues/136)
 
 ---
