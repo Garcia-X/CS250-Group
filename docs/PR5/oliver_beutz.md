@@ -4,19 +4,19 @@ Full RMMM for any risk you own. AI disclosure note, if a tool helped you.
 
 Click edit to copy the templet:
 
-# [Your Full Name]
+# Oliver Beutz
 
-**Team Number:** [Your team number]  
-**Feature:** [Name of the selected feature]
+**Team Number:** 11
+**Feature:** Dashboard
 
 ## Risk 1
 
-- **Category:** [Technical / Project / Business]
-- **Risk (CTC):** Given that [condition], then there is concern that [possible consequence].
-- **Probability:** [0.0–1.0]
-- **Impact:** [1 (Catastrophic) / 2 (Critical) / 3 (Marginal) / 4 (Negligible)]
-- **Cost:** [Estimated number of days]
-- **Exposure:** [Probability × Cost = Result in days]
+- **Category:** Project
+- **Risk (CTC):** Given that it's difficult to write tests, then there is concern that we attempt all of htem at the end of the sprint.
+- **Probability:** 0.4
+- **Impact:** 2 (Critical)
+- **Cost:** 3 days
+- **Exposure:** 1.2
 
 ### RMMM (Complete only if this risk is above the cutoff and assigned to you)
 
@@ -29,12 +29,12 @@ Click edit to copy the templet:
 
 ## Risk 2
 
-- **Category:** [Technical / Project / Business]
-- **Risk (CTC):** Given that [condition], then there is concern that [possible consequence].
-- **Probability:** [0.0–1.0]
-- **Impact:** [1 (Catastrophic) / 2 (Critical) / 3 (Marginal) / 4 (Negligible)]
-- **Cost:** [Estimated number of days]
-- **Exposure:** [Probability × Cost = Result in days]
+- **Category:** Technical
+- **Risk (CTC):** Given that our project relies on Supabase, then there is concern that Supabase goes down and we can no longer use it host our data and old data would be lost.
+- **Probability:** 0.00001
+- **Impact:** 1 (Catastrophic)
+- **Cost:** 4 days
+- **Exposure:** 0.00004
 
 ### RMMM (Complete only if this risk is above the cutoff and assigned to you)
 
